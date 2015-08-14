@@ -1,4 +1,5 @@
 class ShipmentsController < ApplicationController
+  before_filter :require_permission, only: [:show, :edit, :update, :destroy]
   before_action :set_shipment, only: [:show, :edit, :update, :destroy]
 
   # GET /shipments
@@ -71,4 +72,10 @@ class ShipmentsController < ApplicationController
     def shipment_params
       params.require(:shipment).permit(:origin, :destination, :mode_of_transportation, :equipment_type, :minimum_commitment, :maximum_commitment, :cost, :user)
     end
+
+  def require_permission
+    if current_user != Shipment.find(params[:id]).user
+      redirect_to root_path
+    end
+  end
 end

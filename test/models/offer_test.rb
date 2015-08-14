@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class OfferTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
+  # test "Validate Offer amount" do
+  # end
+  #
+  # test "Validate Offer user_id" do
+  # end
+  #
+  # test "Validate Offer shipment_id" do
   # end
 end
