@@ -1,0 +1,45 @@
+<%= form_for(@shipment) do |f| %>
+  <% if @shipment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shipment.errors.count, "error") %> prohibited this shipment from being saved:</h2>
+
+      <ul>
+      <% @shipment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :origin %><br>
+    <%= f.text_field :origin %>
+  </div>
+  <div class="field">
+    <%= f.label :destination %><br>
+    <%= f.text_field :destination %>
+  </div>
+  <div class="field">
+    <%= f.label :mode_of_transportation %><br>
+    <%= f.text_field :mode_of_transportation %>
+  </div>
+  <div class="field">
+    <%= f.label :equipment_type %><br>
+    <%= f.text_field :equipment_type %>
+  </div>
+  <div class="field">
+    <%= f.label :minimum_commitment %><br>
+    <%= f.text_field :minimum_commitment %>
+  </div>
+  <div class="field">
+    <%= f.label :maximum_commitment %><br>
+    <%= f.text_field :maximum_commitment %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
