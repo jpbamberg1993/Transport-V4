@@ -31,13 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-<<<<<<< HEAD
-sitearchdir = $(DESTDIR)./.gem.20150814-27617-1qe8lt9
-sitelibdir = $(DESTDIR)./.gem.20150814-27617-1qe8lt9
-=======
-sitearchdir = $(DESTDIR)./.gem.20150814-18633-wnuhn2
-sitelibdir = $(DESTDIR)./.gem.20150814-18633-wnuhn2
->>>>>>> master
+sitearchdir = $(DESTDIR)./.gem.20150814-18633-1owlw08
+sitelibdir = $(DESTDIR)./.gem.20150814-18633-1owlw08
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -84,7 +79,7 @@ optflags = -O3 -fno-fast-math
 debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat
 CCDLFLAGS = -fPIC
-CFLAGS   = $(CCDLFLAGS) $(cflags) -Wall -Werror $(ARCH_FLAG)
+CFLAGS   = $(CCDLFLAGS) $(cflags) $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
 CPPFLAGS =  -I/home/paulbamberg22/.rbenv/versions/2.2.2/include  $(DEFS) $(cppflags)
@@ -136,15 +131,15 @@ DISTCLEANDIRS =
 
 extout = 
 extout_prefix = 
-target_prefix = /byebug
+target_prefix = /json/ext
 LOCAL_LIBS = 
 LIBS =   -lpthread -ldl -lcrypt -lm   -lc
-ORIG_SRCS = context.c threads.c byebug.c locker.c breakpoint.c
+ORIG_SRCS = parser.c
 SRCS = $(ORIG_SRCS) 
-OBJS = context.o threads.o byebug.o locker.o breakpoint.o
-HDRS = $(srcdir)/byebug.h
-TARGET = byebug
-TARGET_NAME = byebug
+OBJS = parser.o
+HDRS = $(srcdir)/parser.h
+TARGET = parser
+TARGET_NAME = parser
 TARGET_ENTRY = Init_$(TARGET_NAME)
 DLLIB = $(TARGET).so
 EXTSTATIC = 
@@ -186,7 +181,7 @@ distclean: clean distclean-so distclean-static distclean-rb-default distclean-rb
 realclean: distclean
 install: install-so install-rb
 
-install-so: $(DLLIB) $(TIMESTAMP_DIR)/.RUBYARCHDIR.-.byebug.time
+install-so: $(DLLIB) $(TIMESTAMP_DIR)/.RUBYARCHDIR.-.json.-.ext.time
 	$(INSTALL_PROG) $(DLLIB) $(RUBYARCHDIR)
 clean-static::
 	-$(Q)$(RM) $(STATIC_LIB)
@@ -196,7 +191,7 @@ pre-install-rb: Makefile
 pre-install-rb-default: Makefile
 pre-install-rb-default:
 	@$(NULLCMD)
-$(TIMESTAMP_DIR)/.RUBYARCHDIR.-.byebug.time:
+$(TIMESTAMP_DIR)/.RUBYARCHDIR.-.json.-.ext.time:
 	$(Q) $(MAKEDIRS) $(@D) $(RUBYARCHDIR)
 	$(Q) $(TOUCH) $@
 
@@ -255,10 +250,11 @@ site-install-rb: install-rb
 	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -S $<
 
 $(DLLIB): $(OBJS) Makefile
-	$(ECHO) linking shared-object byebug/$(DLLIB)
+	$(ECHO) linking shared-object json/ext/$(DLLIB)
 	-$(Q)$(RM) $(@)
 	$(Q) $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
 
 
 
-$(OBJS): $(HDRS) $(ruby_headers)
+###
+parser.o: parser.c parser.h $(srcdir)/../fbuffer/fbuffer.h

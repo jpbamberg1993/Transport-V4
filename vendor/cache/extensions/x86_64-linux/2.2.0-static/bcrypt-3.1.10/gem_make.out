@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-27617-1qjfra9.rb extconf.rb
+=======
+/home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-18633-ki0vz1.rb extconf.rb
+>>>>>>> master
 creating Makefile
 
 make "DESTDIR=" clean
@@ -12,4 +16,8 @@ compiling crypt_blowfish.c
 linking shared-object bcrypt_ext.so
 
 make "DESTDIR=" install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20150814-27617-1jr57e8
+=======
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20150814-18633-1kr2ms5
+>>>>>>> master

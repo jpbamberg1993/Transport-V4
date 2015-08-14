@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-27617-z9jqpa.rb extconf.rb
+=======
+/home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-18633-1mz325.rb extconf.rb
+>>>>>>> master
 creating Makefile
 
 make "DESTDIR=" clean
@@ -12,4 +16,8 @@ compiling breakpoint.c
 linking shared-object byebug/byebug.so
 
 make "DESTDIR=" install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 byebug.so ./.gem.20150814-27617-1qe8lt9/byebug
+=======
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20150814-18633-wnuhn2/byebug
+>>>>>>> master

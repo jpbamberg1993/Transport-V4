@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-27617-y6mhxk.rb extconf.rb
+=======
+/home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-18633-1lxcmpy.rb extconf.rb
+>>>>>>> master
 
 make "DESTDIR=" clean
 make: *** No rule to make target 'clean'.  Stop.

@@ -31,13 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-<<<<<<< HEAD
-sitearchdir = $(DESTDIR)./.gem.20150814-27617-1qe8lt9
-sitelibdir = $(DESTDIR)./.gem.20150814-27617-1qe8lt9
-=======
-sitearchdir = $(DESTDIR)./.gem.20150814-18633-wnuhn2
-sitelibdir = $(DESTDIR)./.gem.20150814-18633-wnuhn2
->>>>>>> master
+sitearchdir = $(DESTDIR)./.gem.20150814-18633-1k5ylue
+sitelibdir = $(DESTDIR)./.gem.20150814-18633-1k5ylue
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -84,7 +79,7 @@ optflags = -O3 -fno-fast-math
 debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat
 CCDLFLAGS = -fPIC
-CFLAGS   = $(CCDLFLAGS) $(cflags) -Wall -Werror $(ARCH_FLAG)
+CFLAGS   = $(CCDLFLAGS) $(cflags) $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
 CPPFLAGS =  -I/home/paulbamberg22/.rbenv/versions/2.2.2/include  $(DEFS) $(cppflags)
@@ -136,17 +131,17 @@ DISTCLEANDIRS =
 
 extout = 
 extout_prefix = 
-target_prefix = /byebug
+target_prefix = 
 LOCAL_LIBS = 
 LIBS =   -lpthread -ldl -lcrypt -lm   -lc
-ORIG_SRCS = context.c threads.c byebug.c locker.c breakpoint.c
+ORIG_SRCS = 
 SRCS = $(ORIG_SRCS) 
-OBJS = context.o threads.o byebug.o locker.o breakpoint.o
-HDRS = $(srcdir)/byebug.h
-TARGET = byebug
-TARGET_NAME = byebug
+OBJS = 
+HDRS = 
+TARGET = 
+TARGET_NAME = 
 TARGET_ENTRY = Init_$(TARGET_NAME)
-DLLIB = $(TARGET).so
+DLLIB = 
 EXTSTATIC = 
 STATIC_LIB = 
 
@@ -162,7 +157,7 @@ TARGET_SO     = $(DLLIB)
 CLEANLIBS     = $(TARGET).so 
 CLEANOBJS     = *.o  *.bak
 
-all:    $(DLLIB)
+all:    Makefile
 static: $(STATIC_LIB)
 .PHONY: all install static install-so install-rb
 .PHONY: clean clean-so clean-static clean-rb
@@ -186,79 +181,15 @@ distclean: clean distclean-so distclean-static distclean-rb-default distclean-rb
 realclean: distclean
 install: install-so install-rb
 
-install-so: $(DLLIB) $(TIMESTAMP_DIR)/.RUBYARCHDIR.-.byebug.time
-	$(INSTALL_PROG) $(DLLIB) $(RUBYARCHDIR)
-clean-static::
-	-$(Q)$(RM) $(STATIC_LIB)
+install-so: Makefile
 install-rb: pre-install-rb install-rb-default
 install-rb-default: pre-install-rb-default
 pre-install-rb: Makefile
 pre-install-rb-default: Makefile
 pre-install-rb-default:
 	@$(NULLCMD)
-$(TIMESTAMP_DIR)/.RUBYARCHDIR.-.byebug.time:
-	$(Q) $(MAKEDIRS) $(@D) $(RUBYARCHDIR)
-	$(Q) $(TOUCH) $@
 
 site-install: site-install-so site-install-rb
 site-install-so: install-so
 site-install-rb: install-rb
 
-.SUFFIXES: .c .m .cc .mm .cxx .cpp .o .S
-
-.cc.o:
-	$(ECHO) compiling $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
-
-.cc.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
-
-.mm.o:
-	$(ECHO) compiling $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
-
-.mm.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
-
-.cxx.o:
-	$(ECHO) compiling $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
-
-.cxx.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
-
-.cpp.o:
-	$(ECHO) compiling $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
-
-.cpp.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -S $<
-
-.c.o:
-	$(ECHO) compiling $(<)
-	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -c $<
-
-.c.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -S $<
-
-.m.o:
-	$(ECHO) compiling $(<)
-	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -c $<
-
-.m.S:
-	$(ECHO) translating $(<)
-	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -S $<
-
-$(DLLIB): $(OBJS) Makefile
-	$(ECHO) linking shared-object byebug/$(DLLIB)
-	-$(Q)$(RM) $(@)
-	$(Q) $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
-
-
-
-$(OBJS): $(HDRS) $(ruby_headers)

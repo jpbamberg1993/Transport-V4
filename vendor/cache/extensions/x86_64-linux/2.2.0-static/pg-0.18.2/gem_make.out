@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-27617-1n621rl.rb extconf.rb
+=======
+/home/paulbamberg22/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150814-18633-o79xi3.rb extconf.rb
+>>>>>>> master
 checking for pg_config... yes
 Using config values from /usr/bin/pg_config
 checking for libpq-fe.h... yes
@@ -69,4 +73,8 @@ compiling pg.c
 linking shared-object pg_ext.so
 
 make "DESTDIR=" install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 pg_ext.so ./.gem.20150814-27617-p3g5f6
+=======
+/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20150814-18633-1mqudye
+>>>>>>> master
