@@ -5,7 +5,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments
   # GET /shipments.json
   def index
-    @shipments = Shipment.where
+    @shipments = Shipment.all
   end
 
   # GET /shipments/1
