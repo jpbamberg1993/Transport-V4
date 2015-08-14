@@ -22,6 +22,9 @@ class ShipmentsController < ApplicationController
   def edit
   end
 
+  def offer
+    @offers = Offer.all
+  end
   # POST /shipments
   # POST /shipments.json
   def create
