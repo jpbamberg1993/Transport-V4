@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  company_name: "one"
+  email: "one@example.com"
+  created_at: <%= 5.days.ago %>
+  updated_at: <%= 5.days.ago %>
 # column: value
 #
-two: {}
+two:
+  company_name: "two"
+  email: "two@example.com"
+  created_at: <%= 3.days.ago %>
+  updated_at: <%= 3.days.ago %>
 #  column: value

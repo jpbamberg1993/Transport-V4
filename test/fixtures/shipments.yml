@@ -8,14 +8,14 @@ one:
   minimum_commitment: 1
   maximum_commitment: 1
   cost: 1
-  user_id: 
+  user_id: 1
 
 two:
-  origin: MyString
-  destination: MyString
-  mode_of_transportation: MyString
-  equipment_type: MyString
-  minimum_commitment: 1
-  maximum_commitment: 1
-  cost: 1
-  user_id: 
+  origin: YourString
+  destination: YourString
+  mode_of_transportation: YourString
+  equipment_type: YourString
+  minimum_commitment: 2
+  maximum_commitment: 2
+  cost: 2
+  user_id: 2
