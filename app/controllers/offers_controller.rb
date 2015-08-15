@@ -7,12 +7,6 @@ class OffersController < ApplicationController
     @offers = Offer.all
   end
 
-  # GET /offers/1
-  # GET /offers/1.json
-  def show
-    puts "THIS IS A TEST"
-  end
-
   # GET /offers/new
   def new
     @offer = Offer.new
