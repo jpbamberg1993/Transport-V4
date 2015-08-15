@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # => Email, Password Already Validated
-  validates :company_name, presence: true
+  # validates :company_name, presence: true
 
 end
