@@ -4,8 +4,6 @@ class Shipment < ActiveRecord::Base
 
   validates :user, presence: :true
 
-  # :origin, :destination, :mode_of_transportation, :equipment_type, :minimum_commitment, :maximum_commitment, :cost,
-
   validates :origin, presence: :true
   validates :destination, presence: :true
   validates :mode_of_transportation, presence: :true

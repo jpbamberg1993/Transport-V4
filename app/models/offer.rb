@@ -1,4 +1,7 @@
 class Offer < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :shipment, touch: true
+
   # => amount: integer
   validates :amount, presence: true, numericality: { only_integer: true }
   # => user_id: integer
@@ -9,6 +12,6 @@ class Offer < ActiveRecord::Base
   validates_associated :shipment
 
   belongs_to :user
-  belongs_to :shipment
+  belongs_to :shipment, touch: true
 
 end
