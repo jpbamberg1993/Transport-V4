@@ -17,7 +17,7 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
   end
-
+  
   # GET /offers/1/edit
   def edit
   end
@@ -69,6 +69,7 @@ class OffersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # adding accept parameter
     def offer_params
       params.require(:offer).permit(:amount, :user_id, :shipment_id)
     end
