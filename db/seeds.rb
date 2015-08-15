@@ -6,9 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-wyncode = User.create( company_name: "Wyncode", email: "wyncode@example.com", encrypted_password: "password" )
-juvenal = User.create( company_name: "Juvenal", email: "juvenal@example.com", encrypted_password: "password" )
+User.create( id: 1, email: "chrisalan313@gmail.com", password: "password", company_name: "Company 1" )
 
-shipment = Shipment.create( origin: "FL", destination: "GA", user_id: wyncode.id )
+User.create( id: 2, email: "example@example.com", password: "password", company_name: "Company 2")
 
-Offer.create( amount: 10000, user_id: juvenal.id, shipment_id: shipment.id )
+Shipment.create( id: 4, origin: "Here", destination: "There", mode_of_transportation: "Something", equipment_type: "Something", minimum_commitment: 1, maximum_commitment: 2, cost: 2222, user_id: 1 )
+
+Offer.create( id: 2, amount: 222222, user_id: 2, shipment_id: 4 )
