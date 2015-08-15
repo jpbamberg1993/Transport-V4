@@ -11,7 +11,9 @@ class Offer < ActiveRecord::Base
   validates :shipment_id, presence: true
   validates_associated :shipment
 
-  belongs_to :user
-  belongs_to :shipment, touch: true
 
+
+  def set_user(user)
+    self.user_id = user.id
+  end
 end

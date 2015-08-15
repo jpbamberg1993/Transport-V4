@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Amount</th>
-      <th>User</th>
+      <th>Bidding Company</th>
       <th>Shipment</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +16,7 @@
     <% @offers.each do |offer| %>
       <tr>
         <td><%= offer.amount %></td>
-        <td><%= offer.user %></td>
+        <td><%= offer.user.company_name %></td>
         <td><%= offer.shipment %></td>
         <td><%= link_to 'Show', offer %></td>
         <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
