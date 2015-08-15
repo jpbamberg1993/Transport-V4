@@ -29,7 +29,7 @@
         <td><%#= shipment.maximum_commitment %></td>!-->
         <td><%= shipment.cost %></td>
         <td><%= '#' %></td>
-        <td><%= @users.company %></td>
+        <td><%= shipment.user.company_name %></td>
         <td><%= link_to 'Show', shipment %></td>
         <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
         <td><%= link_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
