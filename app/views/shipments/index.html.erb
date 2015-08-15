@@ -7,13 +7,13 @@
     <tr>
       <th>Origin</th>
       <th>Destination</th>
-      <th>Mode of transportation</th>
+      <!--<th>Mode of transportation</th>
       <th>Equipment type</th>
       <th>Minimum commitment</th>
-      <th>Maximum commitment</th>
+      <th>Maximum commitment</th>!-->
       <th>Cost</th>
-      <th>Offers</th>
-      <th>User</th>
+      <th>Current Bids</th>
+      <th>Company</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,10 +23,10 @@
       <tr>
         <td><%= shipment.origin %></td>
         <td><%= shipment.destination %></td>
-        <td><%= shipment.mode_of_transportation %></td>
+        <!--<td><%= shipment.mode_of_transportation %></td>
         <td><%= shipment.equipment_type %></td>
         <td><%= shipment.minimum_commitment %></td>
-        <td><%= shipment.maximum_commitment %></td>
+        <td><%= shipment.maximum_commitment %></td>!-->
         <td><%= shipment.cost %></td>
         <td><%= '#' %></td>
         <td><%= shipment.user.email %></td>

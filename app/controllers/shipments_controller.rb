@@ -12,6 +12,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1.json
   def show
     @offer = Offer.new
+    #@offers = Offer.all
   end
 
   # GET /shipments/new
