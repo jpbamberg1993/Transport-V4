@@ -11,7 +11,7 @@ class Offer < ActiveRecord::Base
   validates :shipment_id, presence: true
   validates_associated :shipment
 
-
+  
 
   def set_user(user)
     self.user_id = user.id

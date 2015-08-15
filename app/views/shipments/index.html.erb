@@ -12,7 +12,7 @@
       <th>Minimum commitment</th>
       <th>Maximum commitment</th>!-->
       <th>Cost</th>
-      <th>Current Bids</th>
+      <th>Highest Offer</th>
       <th>Company</th>
       <th colspan="3"></th>
     </tr>
@@ -28,7 +28,7 @@
         <td><%#= shipment.minimum_commitment %></td>
         <td><%#= shipment.maximum_commitment %></td>!-->
         <td><%= shipment.cost %></td>
-        <td><%= '#' %></td>
+        <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
         <td><%= shipment.user.company_name %></td>
         <td><%= link_to 'Show', shipment %></td>
         <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
