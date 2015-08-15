@@ -11,6 +11,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1
   # GET /shipments/1.json
   def show
+    @offer = Offer.new
   end
 
   # GET /shipments/new
@@ -21,7 +22,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1/edit
   def edit
   end
-  
+
   # POST /shipments
   # POST /shipments.json
   def create
