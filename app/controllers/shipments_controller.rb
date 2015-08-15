@@ -21,10 +21,6 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1/edit
   def edit
   end
-
-  def offer
-    @offers = Offer.all
-  end
   
   # POST /shipments
   # POST /shipments.json
