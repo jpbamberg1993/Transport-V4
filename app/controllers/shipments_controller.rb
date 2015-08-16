@@ -5,7 +5,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments
   # GET /shipments.json
   def index
-    @shipments = Shipment.all
+    @shipments = filtered_shipments()
   end
 
   # GET /shipments/1
@@ -78,6 +78,14 @@ class ShipmentsController < ApplicationController
   def require_permission
     if current_user != Shipment.find(params[:id]).user
       redirect_to root_path
+    end
+  end
+
+  def filtered_shipments
+    if current_user == "carrier"
+      Shipment.all
+    else
+      Shipment.where( user_id: @current_user.id)
     end
   end
 end
