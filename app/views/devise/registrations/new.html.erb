@@ -9,10 +9,7 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag( :role, "carrier", :checked => true ) %>
-    <%= label_tag( :role_carrier, "Carrier" ) %>
-    <%= radio_button_tag( :role, "shipper" ) %>
-    <%= label_tag( :role_shipper, "Shipper" ) %>
+    <%= f.select :role, ['carrier', 'shipper']%>
   </div>
 
   <div class="field">
