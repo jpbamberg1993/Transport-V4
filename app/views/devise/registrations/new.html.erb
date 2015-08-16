@@ -8,13 +8,6 @@
     <%= f.text_field :company_name, autofocus: true %>
   </div>
 
-  <div>
-    <%= f.radio_button :role, 'shipper', :checked => true %>
-    <%= label :role_shipper, 'Shipper' %>
-    <%= f.radio_button :role, 'carrier' %>
-    <%= label :role_carrier, 'Carrier' %>
-  </div
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
