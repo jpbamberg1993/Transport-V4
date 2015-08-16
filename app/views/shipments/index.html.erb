@@ -19,22 +19,34 @@
   </thead>
 
   <tbody>
-    <% @shipments.each do |shipment| %>
-      <tr>
-        <td><%= shipment.origin %></td>
-        <td><%= shipment.destination %></td>
-        <!--<td><%#= shipment.mode_of_transportation %></td>
-        <td><%#= shipment.equipment_type %></td>
-        <td><%#= shipment.minimum_commitment %></td>
-        <td><%#= shipment.maximum_commitment %></td>!-->
-        <td><%= shipment.cost %></td>
-        <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
-        <td><%= shipment.user.company_name %></td>
-        <td><%= link_to 'Show', shipment %></td>
-        <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
-        <td><%= link_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-      </tr>
+    <%= if @current_user.type == "shipper" %>
+      <% @shipments.each do |shipment| %>
+        <tr>
+          <td><%= shipment.origin %></td>
+          <td><%= shipment.destination %></td>
+          <!--<td><%#= shipment.mode_of_transportation %></td>
+          <td><%#= shipment.equipment_type %></td>
+          <td><%#= shipment.minimum_commitment %></td>
+          <td><%#= shipment.maximum_commitment %></td>!-->
+          <td><%= shipment.cost %></td>
+          <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
+          <td><%= shipment.user.company_name %></td>
+          <td><%= link_to 'Show', shipment %></td>
+          <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
+          <td><%= link_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <% @shipments.each do |shipment| %>
+        <tr>
+          <td><%= shipment.origin %></td>
+          <td><%= shipment.destination %></td>
+          <td><%= shipment.cost %></td>
+          <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
+          <td><%= shipment.user.company_name %></td>
+          <td><%= link_to 'Show', shipment %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
