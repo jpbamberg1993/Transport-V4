@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   validates :company_name, presence: true
   validates :role, presence: true
 
+  # def shipper?(current_user)
+  #   current_user.role == "shipper"
+  # end
+
 end
