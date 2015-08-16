@@ -23,7 +23,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1/edit
   def edit
   end
-
+  
   # POST /shipments
   # POST /shipments.json
   def create
