@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
 
   # => Email, Password Already Validated
   validates :company_name, presence: true
-
-  validates_presence_of :role
+  validates :role, presence: true
 
 end
