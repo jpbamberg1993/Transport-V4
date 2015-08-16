@@ -51,6 +51,6 @@
     <%= Offer.where(shipment_id: @shipment.id).minimum("amount") %>
   <h1>You have left the construction zone. Thank you.</h1>
 
-  <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
+    <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
+  <% end %>
   <%= link_to 'Back', shipments_path %>
-<% end %>
