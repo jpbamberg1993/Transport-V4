@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <%= if @current_user.type == "shipper" %>
+    <%= if @current_user.role == "shipper" %>
       <% @shipments.each do |shipment| %>
         <tr>
           <td><%= shipment.origin %></td>
