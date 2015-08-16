@@ -28,7 +28,7 @@
           <td><%#= shipment.equipment_type %></td>
           <td><%#= shipment.minimum_commitment %></td>
           <td><%#= shipment.maximum_commitment %></td>!-->
-          <td><%= shipment.cost %></td>
+          <td>$<%= shipment.formatted_price %></td>
           <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
           <td><%= shipment.user.company_name %></td>
           <td><%= link_to 'Show', shipment %></td>

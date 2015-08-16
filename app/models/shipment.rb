@@ -11,16 +11,15 @@ class Shipment < ActiveRecord::Base
   validates :minimum_commitment, presence: :true
   validates :maximum_commitment, presence: :true
   validates :cost, presence: :true
-
-	def formatted_price
-		price_in_dollars = price_in_cents.to_f / 100
-		sprintf("%.2f", price_in_dollars)
-	end
+  # validates :price_in_cents, numericality: {only_integer: true, greater_than: 0}
 
   scope :owned, ->  { where( user_id: @current_user.id) }
 
   #scope :invited_to, -> { where()}
-end
 
-# 1. create new controller action and use that for the admin view
-# 2. use existing controller figure out current user then create instance variable with offers if current use owns shipment
+  def formatted_price
+    price_in_dollars = cost.to_f / 100
+    format("%.2f", price_in_dollars)
+  end
+
+end
