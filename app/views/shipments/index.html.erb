@@ -27,15 +27,10 @@
         <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
         <td><%= shipment.user.company_name %></td>
         <td><%= link_to 'Show', shipment %></td>
-        <% if (current_user.role == "shipper") %>
-          <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
-          <td><%= link_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-          <td><%= shipment.origin %></td>
-          <td><%= shipment.destination %></td>
-          <td>$<%= shipment.formatted_price %></td>
-          <td><%= link_to 'Show', shipment %></td>
-        <% end %>
+      <% if (current_user.role == "shipper") %>
+        <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
+        <td><%= link_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -43,6 +38,6 @@
 
 <br>
 
-<% if (current_user.role == "shipper") %>
+<% if current_user.shipper? %>
   <%= link_to 'New Shipment', new_shipment_path %>
 <% end %>
