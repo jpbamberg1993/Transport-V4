@@ -6,7 +6,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments.json
   def index
     @shipments = filtered_shipments
-    @current_user = current_user
+    current_user
   end
 
   # GET /shipments/1
@@ -83,7 +83,7 @@ class ShipmentsController < ApplicationController
   end
 
   def filtered_shipments
-    if current_user.role == "carrier"
+    if current_user.carrier?
       Shipment.all
     else
       Shipment.where( user_id: @current_user.id)
