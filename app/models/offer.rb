@@ -22,4 +22,5 @@ class Offer < ActiveRecord::Base
   def set_user(user)
     self.user_id = user.id
   end
+  
 end
