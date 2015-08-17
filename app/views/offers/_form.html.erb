@@ -12,6 +12,14 @@
   <% end %>
 
   <div class="field">
+      <%= f.label :accepted %><br>
+
+    <%= f.check_box :accepted %>
+ 
+  </div>
+
+
+  <div class="field">
     <%= f.label :amount %><br>
     <%= f.number_field :amount %>
   </div>

@@ -25,6 +25,13 @@ class ShipmentsController < ApplicationController
   def edit
   end
 
+  # Accept highest offer button
+  def activate 
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+    redirect_to "shipments?approved=true"
+  end
+
   # POST /shipments
   # POST /shipments.json
   def create

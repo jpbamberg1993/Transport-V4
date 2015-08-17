@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   root 'shipments#index'
 
+  resources :memberships do
+    put :accepted
+    put :rejected
+  end
   #get 'layouts/home'
 
   # The priority is based upon order of creation: first created -> highest priority.

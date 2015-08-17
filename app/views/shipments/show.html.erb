@@ -38,6 +38,9 @@
   <%= @shipment.user.email %>
 </p>
 
+<!-- Accept Highest Bid Button -->
+<%= link_to 'Accpeted', :controller => 'shipments', :id => current_user.id, :action => 'activate', :method => :put, :accepted => true %>
+
 <% if current_user.carrier? %>
   <h1>Make an offer</h1>
   <%= render "offers/form" %>
@@ -53,3 +56,4 @@
 <% end %>
 
 <%= link_to 'Back', shipments_path %>
+
