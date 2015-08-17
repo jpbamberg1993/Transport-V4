@@ -8,8 +8,8 @@ class Shipment < ActiveRecord::Base
   validates :destination, presence: :true
   validates :mode_of_transportation, presence: :true
   validates :equipment_type, presence: :true
-  validates :minimum_commitment, presence: :true
-  validates :maximum_commitment, presence: :true
+  validates :minimum_commitment
+  validates :maximum_commitment
   validates :cost, presence: :true
   # validates :price_in_cents, numericality: {only_integer: true, greater_than: 0}
 
