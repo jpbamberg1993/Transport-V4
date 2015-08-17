@@ -38,19 +38,18 @@
   <%= @shipment.user.email %>
 </p>
 
-
-<% if (current_user.role == "end") %>
+<% if current_user.carrier? %>
   <h1>Make an offer</h1>
-    <%= render "offers/form" %>
-    <%= %>
+  <%= render "offers/form" %>
+<% end %>
 
-  <h1>Chris is working here please don't delete</h1>
-  <h1>Highest Offer</h1>
-    <%= Offer.where(shipment_id: @shipment.id).maximum("amount") %>
-  <h1>Lowest Offer</h1>
-    <%= Offer.where(shipment_id: @shipment.id).minimum("amount") %>
-  <h1>You have left the construction zone. Thank you.</h1>
+<h1>Highest Offer</h1>
+<%= Offer.where(shipment_id: @shipment.id).maximum("amount") %>
+<h1>Lowest Offer</h1>
+<%= Offer.where(shipment_id: @shipment.id).minimum("amount") %>
 
-    <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
-  <% end %>
-  <%= link_to 'Back', shipments_path %>
+<% if current_user.shipper? %>
+  <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
+<% end %>
+
+<%= link_to 'Back', shipments_path %>
