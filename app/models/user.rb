@@ -15,11 +15,11 @@ class User < ActiveRecord::Base
   # end
 
   def shipper?
-    @current_user.role == "shipper"
+    self.role == "shipper"
   end
 
   def carrier?
-    @current_user.role == "carrier"
+    self.role == "carrier"
   end
 
 end
