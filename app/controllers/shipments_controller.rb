@@ -1,18 +1,18 @@
 class ShipmentsController < ApplicationController
-  before_filter :require_permission, only: [:show, :edit, :update, :destroy]
+  before_filter :require_permission, only: [:edit, :update, :destroy]
   before_action :set_shipment, only: [:show, :edit, :update, :destroy]
 
   # GET /shipments
   # GET /shipments.json
   def index
-    @shipments = filtered_shipments()
+    @shipments = filtered_shipments
   end
 
   # GET /shipments/1
   # GET /shipments/1.json
   def show
     @offer = Offer.new
-    #@offers = Offer.all
+    #@offers =
   end
 
   # GET /shipments/new
@@ -23,7 +23,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1/edit
   def edit
   end
-  
+
   # POST /shipments
   # POST /shipments.json
   def create
@@ -82,7 +82,7 @@ class ShipmentsController < ApplicationController
   end
 
   def filtered_shipments
-    if current_user == "carrier"
+    if current_user.role == "carrier"
       Shipment.all
     else
       Shipment.where( user_id: @current_user.id)
