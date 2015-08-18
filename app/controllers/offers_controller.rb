@@ -11,7 +11,7 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
   end
-  
+
   # GET /offers/1/edit
   def edit
   end
