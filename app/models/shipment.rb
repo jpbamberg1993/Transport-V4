@@ -1,5 +1,6 @@
 class Shipment < ActiveRecord::Base
-  belongs_to :user
+  has_many :users, through: :user_shipments
+  has_many :user_shipments
   has_many :offers, dependent: :destroy
 
 

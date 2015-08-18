@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :shipments, dependent: :destroy
+  has_many :shipments, through: :user_shipments
+  has_many :user_shipments
   has_many :offers, dependent: :destroy
 
   # Include default devise modules. Others available are:
