@@ -19,7 +19,7 @@ class Shipment < ActiveRecord::Base
   #scope :invited_to, -> { where()}
 
   def formatted_price
-    price_in_dollars = cost.to_f / 100
+    price_in_dollars = cost.to_f
     format("%.2f", price_in_dollars)
   end
 

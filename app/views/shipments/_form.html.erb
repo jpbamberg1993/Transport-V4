@@ -15,30 +15,41 @@
     <%= f.label :origin %><br>
     <%= f.text_field :origin %>
   </div>
+
   <div class="field">
     <%= f.label :destination %><br>
     <%= f.text_field :destination %>
   </div>
+
   <div class="field">
     <%= f.label :mode_of_transportation %><br>
-    <%= f.text_field :mode_of_transportation %>
+    <%= f.select :mode_of_transportation, ['Select One', 'Full load', 'Less than full load'] %>
   </div>
+
   <div class="field">
     <%= f.label :equipment_type %><br>
-    <%= f.text_field :equipment_type %>
+    <%= f.select :equipment_type, ['Select One', 'Semi / Tractor-trailer', 'Box Truck'] %><br>
   </div>
+
   <div class="field">
     <%= f.label :minimum_commitment %><br>
-    <%= f.number_field :minimum_commitment %>
+    <%#= f.number_field :minimum_commitment %>
+    <%= f.select :minimum_commitment, (0..500) %>
+    No. of trucks per day
   </div>
+
   <div class="field">
     <%= f.label :maximum_commitment %><br>
-    <%= f.number_field :maximum_commitment %>
+    <%#= f.number_field :minimum_commitment %>
+    <%= f.select :maximum_commitment, (0..500) %>
+    No. of trucks per day
   </div>
+
   <div class="field">
-    <%= f.label :cost %><br>
+    <%= f.label :cost %> in US$ - flat-rate<br>
     <%= f.number_field :cost %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
