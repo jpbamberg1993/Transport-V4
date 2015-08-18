@@ -38,18 +38,12 @@
   <%= @shipment.user.email %>
 </p>
 
-<!-- Accept Highest Bid Button -->
-<%= link_to 'Accpeted', :controller => 'shipments', :id => current_user.id, :action => 'activate', :method => :put, :accepted => true %>
-
-<% if current_user.carrier? %>
-  <h1>Make an offer</h1>
-  <%= render "offers/form" %>
-<% end %>
 
 <h1>Highest Offer</h1>
-<%= Offer.where(shipment_id: @shipment.id).maximum("amount") %>
+  <%= render "offers/form" %>
+  <%= Offer.where(shipment_id: @shipment.id).maximum("amount") %>
 <h1>Lowest Offer</h1>
-<%= Offer.where(shipment_id: @shipment.id).minimum("amount") %>
+  <%= Offer.where(shipment_id: @shipment.id).minimum("amount") %>
 
 <% if current_user.shipper? %>
   <%= link_to 'Edit', edit_shipment_path(@shipment) %> |

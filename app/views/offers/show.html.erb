@@ -1,7 +1,12 @@
 <p>
   <strong>Amount:</strong>
   <%= @offer.amount %>
-  <%= "Accepted #{@offer.accepted}" %>
+  <br>
+  <% if @offer.accepted == true %>
+  	<%= 'Your offer was accepted' %>
+  <% else %>
+  	<%= 'Your offer has not been accepted yet' %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_offer_path(@offer) %> |

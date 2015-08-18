@@ -25,6 +25,15 @@ class ShipmentsController < ApplicationController
   def edit
   end
 
+  # def accept_bid(offer)
+  #   if current_user.shipper?
+  #     f.label :accepted
+  #     f.check_box :accepted
+  #   else
+  #     puts 'working'
+  #   end
+  # end
+
   # Accept highest offer button
   def activate 
     @user = User.find(params[:id])

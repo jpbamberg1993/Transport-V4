@@ -16,16 +16,6 @@ class OffersController < ApplicationController
   def edit
   end
 
-  # Accept highest bid button
-  def accepeted
-
-  end
-
-  # Reject highest bid button
-  def rejected
-
-  end
-
   # POST /offers
   # POST /offers.json
   def create
