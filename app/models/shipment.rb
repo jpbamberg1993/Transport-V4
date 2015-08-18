@@ -19,6 +19,14 @@ class Shipment < ActiveRecord::Base
 
   #scope :invited_to, -> { where()}
 
+  def shippers
+    user_shipments.where(role: 'shipper').map(&:user)
+  end
+
+  def carriers
+    user_shipments.where(role: 'carrier').map(&:user)
+  end
+
   def formatted_price
     price_in_dollars = cost.to_f
     format("%.2f", price_in_dollars)

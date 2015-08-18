@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
   #   current_user.role == "shipper"
   # end
 
+  def posted_shipments
+    user_shipments.where(role: 'shipper').map(&:shipment)
+  end
+
+  def carrier_shipments
+    user_shipments.where(role: 'carrier').map(&:shipment)
+  end
+
   def shipper?
     self.role == "shipper"
   end
