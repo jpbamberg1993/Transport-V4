@@ -12,12 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
+    <% if current_user.shipper? %>
+      <%= f.label :accepted %><br>
+      <%= f.check_box :accepted %>
+    <% end %>
   </div>
+
+
+  <div class="field">
+    <% if current_user.carrier? %>
+      <%= f.label :amount %><br>
+      <%= f.number_field :amount %>
+    <% end %>
+  </div>
+
   <div class="field">
     <%= f.hidden_field( :shipment_id, :value => params[:id] ) %><br>
   <div class="actions">
-    <%= f.submit %>
+    <%#= f.submit %>
   </div>
 <% end %>
