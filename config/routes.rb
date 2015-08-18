@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'static_pages/home'
-
+  get 'layouts/header'
+  get 'layouts/footer'
   get 'static_pages/help'
 
   resources :offers

@@ -4,8 +4,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
-        <% if logged_in? %>
+        <li><%= link_to "Help", '#' %></li>
+        <% if current_user %>
         <li><%= link_to "Users", '#' %></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -13,16 +13,16 @@
             <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", '#' %></li>
+            <li><%= link_to "Profile", shipments_path %></li>
+            <li><%=  %></li>
             <li class="divider"></li>
             <li>
-              <%= link_to "Log out", logout_path, method: "delete" %>
+              <%= link_to "Log out", destroy_user_session_path, method: "delete" %>
             </li>
           </ul>
         </li>
         <% else %>
-        <li><%= link_to "Log in", login_path %></li>
+        <li><%= link_to "Log in", new_user_session_path %></li>
         <% end %>
       </ul>
     </nav>
