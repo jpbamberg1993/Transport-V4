@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818225817) do
+ActiveRecord::Schema.define(version: 20150819161939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,9 @@ ActiveRecord::Schema.define(version: 20150818225817) do
     t.integer  "minimum_commitment"
     t.integer  "maximum_commitment"
     t.integer  "cost"
-    t.integer  "user_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
-
-  add_index "shipments", ["user_id"], name: "index_shipments_on_user_id", using: :btree
 
   create_table "user_shipments", force: :cascade do |t|
     t.integer  "user_id"
@@ -77,7 +74,6 @@ ActiveRecord::Schema.define(version: 20150818225817) do
 
   add_foreign_key "offers", "shipments"
   add_foreign_key "offers", "users"
-  add_foreign_key "shipments", "users"
   add_foreign_key "user_shipments", "shipments"
   add_foreign_key "user_shipments", "users"
 end

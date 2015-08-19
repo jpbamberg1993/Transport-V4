@@ -35,7 +35,7 @@ class ShipmentsController < ApplicationController
   # end
 
   # Accept highest offer button
-  def activate 
+  def activate
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     redirect_to "shipments?approved=true"
@@ -44,7 +44,7 @@ class ShipmentsController < ApplicationController
   # POST /shipments
   # POST /shipments.json
   def create
-    @shipment = Shipment.new(shipment_params.merge(user: current_user))
+    @shipment = Shipment.new(shipment_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @shipment.save

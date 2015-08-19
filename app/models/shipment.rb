@@ -3,9 +3,6 @@ class Shipment < ActiveRecord::Base
   has_many :user_shipments
   has_many :offers, dependent: :destroy
 
-
-  validates :user, presence: :true
-
   validates :origin, presence: :true
   validates :destination, presence: :true
   validates :mode_of_transportation, presence: :true
@@ -14,10 +11,6 @@ class Shipment < ActiveRecord::Base
   validates :maximum_commitment, presence: :true
   validates :cost, presence: :true
   # validates :price_in_cents, numericality: {only_integer: true, greater_than: 0}
-
-  scope :owned, ->  { where( user_id: @current_user.id) }
-
-  #scope :invited_to, -> { where()}
 
   def shippers
     user_shipments.where(role: 'shipper').map(&:user)
