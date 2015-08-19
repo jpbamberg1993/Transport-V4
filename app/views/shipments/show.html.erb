@@ -40,9 +40,21 @@
 </p>
 <% end %>
 
-<%= render "offers/accept_offer" %>
+<% if shipper? %>
+  <div class="">
+    <%= render "offers/accept_offer", collection: @offers %>
+  </div>
 
-<% if current_user.shipper? %>
+  <div class="">
+    <%= render 'choose_carriers', collection: @carriers %>
+  </div>
+<% end %>
+
+<% if carrier? %>
+  <%= render "offer/form" %>
+<% end %>
+
+<% if shipper? %>
   <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
 <% end %>
 
