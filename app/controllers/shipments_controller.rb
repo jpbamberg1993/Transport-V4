@@ -100,16 +100,16 @@ class ShipmentsController < ApplicationController
     end
 
   def require_permission
-    if current_user != Shipment.find(params[:id]).user
+    if current_user != Shipment.find(params[:id]).shipper
       redirect_to root_path
     end
   end
 
   def filtered_shipments
     if current_user.carrier?
-      Shipment.all
+      current_user.carrier_shipments
     else
-      Shipment.where( user_id: @current_user.id)
+      current_user.posted_shipments
     end
   end
 end
