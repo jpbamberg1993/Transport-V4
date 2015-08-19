@@ -13,7 +13,6 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1.json
   def show
     @offer = Offer.new
-    #@offers =
   end
 
   # GET /shipments/new
@@ -25,15 +24,6 @@ class ShipmentsController < ApplicationController
   def edit
   end
 
-  # def accept_bid(offer)
-  #   if current_user.shipper?
-  #     f.label :accepted
-  #     f.check_box :accepted
-  #   else
-  #     puts 'working'
-  #   end
-  # end
-
   # Accept highest offer button
   def activate
     @user = User.find(params[:id])
@@ -44,10 +34,10 @@ class ShipmentsController < ApplicationController
   # POST /shipments
   # POST /shipments.json
   def create
-    @shipment = Shipment.new(shipment_params.merge(user: current_user))
-
+    @shipment = Shipment.new(shipment_params)
     respond_to do |format|
       if @shipment.save
+        UserShipment.create( shipment_id: @shipment.id, user_id: current_user.id, role: current_user.role )
         format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
         format.json { render :show, status: :created, location: @shipment }
       else
@@ -95,8 +85,7 @@ class ShipmentsController < ApplicationController
                                        :equipment_type,
                                        :minimum_commitment,
                                        :maximum_commitment,
-                                       :cost,
-                                       :user)
+                                       :cost)
     end
 
   def require_permission
