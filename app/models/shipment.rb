@@ -1,6 +1,6 @@
 class Shipment < ActiveRecord::Base
   has_many :users, through: :user_shipments
-  has_many :user_shipments
+  has_many :user_shipments, dependent: :destroy
   has_many :offers, dependent: :destroy
 
   validates :origin, presence: :true
@@ -14,6 +14,10 @@ class Shipment < ActiveRecord::Base
 
   def shippers
     user_shipments.where(role: 'shipper').map(&:user)
+  end
+
+  def shipper
+    user_shipments.where(role: 'shipper').map(&:user)[0]
   end
 
   def company_name

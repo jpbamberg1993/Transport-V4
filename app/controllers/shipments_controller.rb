@@ -79,20 +79,26 @@ class ShipmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
-      params.require(:shipment).permit(:origin, :destination, :mode_of_transportation, :equipment_type, :minimum_commitment, :maximum_commitment, :cost)
+      params.require(:shipment).permit(:origin,
+                                       :destination,
+                                       :mode_of_transportation,
+                                       :equipment_type,
+                                       :minimum_commitment,
+                                       :maximum_commitment,
+                                       :cost)
     end
 
   def require_permission
-    if current_user != Shipment.find(params[:id]).user
+    if current_user != Shipment.find(params[:id]).shipper
       redirect_to root_path
     end
   end
 
   def filtered_shipments
     if current_user.carrier?
-      Shipment.all
+      current_user.carrier_shipments
     else
-      Shipment.where( user_id: @current_user.id)
+      current_user.posted_shipments
     end
   end
 end
