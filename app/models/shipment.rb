@@ -3,9 +3,6 @@ class Shipment < ActiveRecord::Base
   has_many :user_shipments
   has_many :offers, dependent: :destroy
 
-
-  validates :user_id, presence: :true
-
   validates :origin, presence: :true
   validates :destination, presence: :true
   validates :mode_of_transportation, presence: :true
