@@ -96,7 +96,8 @@ class ShipmentsController < ApplicationController
 
   def filtered_shipments
     if current_user.carrier?
-      current_user.carrier_shipments
+      Shipment.all
+      #current_user.carrier_shipments
     else
       current_user.posted_shipments
     end
