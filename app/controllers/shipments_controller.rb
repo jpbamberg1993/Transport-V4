@@ -13,7 +13,6 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1.json
   def show
     @offer = Offer.new
-    #@offers =
   end
 
   # GET /shipments/new
@@ -24,15 +23,6 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1/edit
   def edit
   end
-
-  # def accept_bid(offer)
-  #   if current_user.shipper?
-  #     f.label :accepted
-  #     f.check_box :accepted
-  #   else
-  #     puts 'working'
-  #   end
-  # end
 
   # Accept highest offer button
   def activate
