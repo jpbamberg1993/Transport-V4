@@ -34,10 +34,10 @@ class ShipmentsController < ApplicationController
   # POST /shipments
   # POST /shipments.json
   def create
-    @shipment = Shipment.new(shipment_params.merge(user_id: current_user.id))
-
+    @shipment = Shipment.new(shipment_params)
     respond_to do |format|
       if @shipment.save
+        UserShipment.create( shipment_id: @shipment.id, user_id: current_user.id, role: current_user.role )
         format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
         format.json { render :show, status: :created, location: @shipment }
       else
@@ -79,7 +79,7 @@ class ShipmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
-      params.require(:shipment).permit(:origin, :destination, :mode_of_transportation, :equipment_type, :minimum_commitment, :maximum_commitment, :cost, :user)
+      params.require(:shipment).permit(:origin, :destination, :mode_of_transportation, :equipment_type, :minimum_commitment, :maximum_commitment, :cost)
     end
 
   def require_permission

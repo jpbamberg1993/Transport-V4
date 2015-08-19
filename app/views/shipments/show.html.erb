@@ -33,12 +33,6 @@
   $<%= @shipment.formatted_price %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @shipment.user.email %>
-</p>
-
-
 <h1>Highest Offer</h1>
   <%= render "offers/form" %>
   <%= Offer.where(shipment_id: @shipment.id).maximum("amount") %>
