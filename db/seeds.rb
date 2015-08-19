@@ -15,7 +15,7 @@
 # Offer.create( id: 2, amount: 222222, user_id: 2, shipment_id: 4 )
 
 # => Create Shippers
-shippers = 3.times do |n|
+shippers = 5.times do |n|
   User.create(company_name: "#{n} Shipper", role: "shipper", email: "shipper#{n}@example.com",  password: "password")
 end
 
