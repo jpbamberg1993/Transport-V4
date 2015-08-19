@@ -44,7 +44,7 @@ class ShipmentsController < ApplicationController
   # POST /shipments
   # POST /shipments.json
   def create
-    @shipment = Shipment.new(shipment_params.merge(user_id: current_user.id))
+    @shipment = Shipment.new(shipment_params.merge(user: current_user))
 
     respond_to do |format|
       if @shipment.save
@@ -100,11 +100,9 @@ class ShipmentsController < ApplicationController
 
   def filtered_shipments
     if current_user.carrier?
-      current_user.carrier_shipments
-      #Shipment.all
+      Shipment.all
     else
-      current_user.posted_shipments
-      #Shipment.find_by_id( (UserShipment.where( user_id: @current_user.id )).shipment_id    )
+      Shipment.where( user_id: @current_user.id)
     end
   end
 end
