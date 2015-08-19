@@ -13,6 +13,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1.json
   def show
     @offer = Offer.new
+    @offers = Offer.list_for_this_shipment(params[:id])
   end
 
   # GET /shipments/new
