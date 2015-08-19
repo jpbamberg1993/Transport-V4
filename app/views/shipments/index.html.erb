@@ -12,8 +12,9 @@
       <th>Minimum commitment</th>
       <th>Maximum commitment</th>!-->
       <th>Cost</th>
-      <th>Highest Offer</th>
+    <% if current_user.carrier? %>
       <th>Company</th>
+    <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,8 +25,9 @@
         <td><%= shipment.origin %></td>
         <td><%= shipment.destination %></td>
         <td>$<%= shipment.formatted_price %></td>
-        <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
+      <% if current_user.carrier? %>
         <td><%= shipment.company_name %></td>
+      <% end %>
         <td><%= link_to 'Show', shipment %></td>
       <% if current_user.shipper? %>
         <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
