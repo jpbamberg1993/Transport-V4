@@ -39,11 +39,8 @@
   <%= @shipment.company_name %>
 </p>
 <% end %>
-<h1>Highest Offer</h1>
-  <%= render "offers/form" %>
-  <%= Offer.where(shipment_id: @shipment.id).maximum("amount") %>
-<h1>Lowest Offer</h1>
-  <%= Offer.where(shipment_id: @shipment.id).minimum("amount") %>
+
+<%= render "offers/accept_offer" %>
 
 <% if current_user.shipper? %>
   <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
