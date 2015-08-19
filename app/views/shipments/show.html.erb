@@ -33,16 +33,12 @@
   $<%= @shipment.formatted_price %>
 </p>
 
-<<<<<<< HEAD
-=======
 <% if current_user.carrier? %>
 <p>
   <strong>Shipper:</strong>
   <%= @shipment.company_name %>
 </p>
 <% end %>
-
->>>>>>> 30a78dae247887977bdaf71fb59e9af43b9009c7
 <h1>Highest Offer</h1>
   <%= render "offers/form" %>
   <%= Offer.where(shipment_id: @shipment.id).maximum("amount") %>
