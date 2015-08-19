@@ -2,37 +2,30 @@
   <strong>Origin:</strong>
   <%= @shipment.origin %>
 </p>
-
 <p>
   <strong>Destination:</strong>
   <%= @shipment.destination %>
 </p>
-
 <p>
   <strong>Mode of transportation:</strong>
   <%= @shipment.mode_of_transportation %>
 </p>
-
 <p>
   <strong>Equipment type:</strong>
   <%= @shipment.equipment_type %>
 </p>
-
 <p>
   <strong>Minimum commitment:</strong>
   <%= @shipment.minimum_commitment %>
 </p>
-
 <p>
   <strong>Maximum commitment:</strong>
   <%= @shipment.maximum_commitment %>
 </p>
-
 <p>
   <strong>Cost:</strong>
   $<%= @shipment.formatted_price %>
 </p>
-
 <% if current_user.carrier? %>
 <p>
   <strong>Shipper:</strong>
