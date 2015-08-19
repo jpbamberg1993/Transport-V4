@@ -17,4 +17,8 @@ group :development, :test do
   gem 'byebug'										  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'web-console', '~> 2.0'			  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'spring'											# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'rspec-rails', '~> 3.3.2'			# Provides generated tests and enables creation of custom tests
+  gem 'factory_girl_rails'					# Used for rspec testing too automatically populate testing data
+  gem 'capybara'										# Simulates user input
+  gem 'database_cleaner'						# Cleans database needed for testing database
 end
