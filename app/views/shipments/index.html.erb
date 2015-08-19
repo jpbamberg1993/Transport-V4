@@ -7,13 +7,14 @@
     <tr>
       <th>Origin</th>
       <th>Destination</th>
-      <!--<th>Mode of transportation</th>
-      <th>Equipment type</th>
-      <th>Minimum commitment</th>
-      <th>Maximum commitment</th>!-->
       <th>Cost</th>
     <% if current_user.carrier? %>
       <th>Company</th>
+    <% end %>
+      <th>Show</th>
+    <% if current_user.shipper? %>
+      <th>Edit</th>
+      <th>Destroy</th>
     <% end %>
       <th colspan="3"></th>
     </tr>
