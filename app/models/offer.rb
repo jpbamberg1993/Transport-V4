@@ -11,16 +11,16 @@ class Offer < ActiveRecord::Base
   validates :shipment_id, presence: true
   validates_associated :shipment
 
-  def show_highest_offer(shipment)
-    Offer.where(shipment_id: shipment.id).maximum("amount")
+  def company
+    User.find_by(id: self.user_id).company_name
   end
 
-  def show_lowest_offer(shipment)
-    Offer.where(shipment_id: shipment.id).minimum("amount")
+  def self.list_for_this_shipment(id)
+    Offer.where(shipment_id: id)
   end
 
   def set_user(user)
     self.user_id = user.id
   end
-  
+
 end
