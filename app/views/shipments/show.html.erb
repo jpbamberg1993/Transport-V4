@@ -34,9 +34,25 @@
 <% end %>
 
 <% if shipper? %>
-  <div class="">
-    <%= render "offers/accept_offer", collection: @offers %>
-  </div>
+
+  <% if @offers.count > 0 %>
+    <div class="placed_offers">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Offer</th>
+          <th>Accept</th>
+          <th>Reject</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render "offers/accept_offer", collection: @offers %>
+      </tbody>
+    </div>
+
+  <% else %>
+    <p>Sorry, no offers at this time.</p>
+  <% end %>
 
   <div class="">
     <%= render 'choose_carriers', collection: @carriers %>
