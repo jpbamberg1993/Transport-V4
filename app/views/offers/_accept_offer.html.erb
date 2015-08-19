@@ -1,1 +1,8 @@
-Intended to be used to potentially accept offers
+<%= content_tag_for(:div, @offers) do |offer| %>
+  <tr>
+    <td><%= offer.comany %></td>
+    <td><%= offer.amount %></td>
+    <td> Accept offer button here? </td>
+    <td> Reject offer button here? </td>
+  </tr>
+<% end %>
