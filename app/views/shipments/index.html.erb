@@ -25,7 +25,7 @@
         <td><%= shipment.destination %></td>
         <td>$<%= shipment.formatted_price %></td>
         <td><%= Offer.where(shipment_id: shipment.id).maximum("amount") %> by </td>
-        <td><%= shipment.user.company_name %></td>
+        <td><%= shipment.company_name %></td>
         <td><%= link_to 'Show', shipment %></td>
       <% if current_user.shipper? %>
         <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>

@@ -33,11 +33,12 @@
   $<%= @shipment.formatted_price %>
 </p>
 
+<% if current_user.carrier? %>
 <p>
-  <strong>User:</strong>
-  <%= @shipment.user.email %>
+  <strong>Shipper:</strong>
+  <%= @shipment.company_name %>
 </p>
-
+<% end %>
 
 <h1>Highest Offer</h1>
   <%= render "offers/form" %>
@@ -50,4 +51,3 @@
 <% end %>
 
 <%= link_to 'Back', shipments_path %>
-
