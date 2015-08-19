@@ -16,6 +16,10 @@ class Shipment < ActiveRecord::Base
     user_shipments.where(role: 'shipper').map(&:user)
   end
 
+  def company_name
+    user_shipments.where(role: 'shipper').map(&:user)[0].company_name
+  end
+
   def carriers
     user_shipments.where(role: 'carrier').map(&:user)
   end
