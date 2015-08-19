@@ -100,9 +100,11 @@ class ShipmentsController < ApplicationController
 
   def filtered_shipments
     if current_user.carrier?
-      Shipment.all
+      current_user.carrier_shipments
+      #Shipment.all
     else
-      Shipment.where( user_id: @current_user.id)
+      current_user.posted_shipments
+      #Shipment.find_by_id( (UserShipment.where( user_id: @current_user.id )).shipment_id    )
     end
   end
 end
