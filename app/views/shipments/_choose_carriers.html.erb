@@ -1,1 +1,3 @@
-Choose Carriers Partial
+<%= content_tag_for(:div, @carriers) do |carrier| %>
+  <%= link_to carrier.company_name, users_path(carrier) %>
+<% end %>

@@ -14,6 +14,7 @@ class ShipmentsController < ApplicationController
   def show
     @offer = Offer.new
     @offers = Offer.list_for_this_shipment(params[:id])
+    @carriers = User.list_carriers
   end
 
   # GET /shipments/new
