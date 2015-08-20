@@ -72,3 +72,33 @@ div {
     list-style: square;
   }
 }
+
+#logo {
+  color: white;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid gray;
+  color: white;
+  a {
+    color: gray;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  small {
+    float: left;
+    color: gray;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}

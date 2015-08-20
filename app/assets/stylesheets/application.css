@@ -15,20 +15,9 @@
  */
 
 
-#new_user{
-  margin: 0, auto;
-}
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
-
-
-
-
-
-
-
-
-
-
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
+ body {
+   background: #white;
+ }
