@@ -21,3 +21,7 @@
  body {
    background: #white;
  }
+
+/*.cloud-logo-header:before {
+  content:url('images/cloud-logo-header.jpg')
+}*/

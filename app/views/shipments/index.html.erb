@@ -20,7 +20,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="shipment-table">
     <% @shipments.each do |shipment| %>
       <tr>
         <td><%= shipment.origin %></td>
@@ -29,10 +29,10 @@
       <% if current_user.carrier? %>
         <td><%= shipment.company_name %></td>
       <% end %>
-        <td><%= link_to 'show-button', shipment %></td>
+        <td><%= link_to 'View', shipment, class: "btn btn-primary" %></td>
       <% if current_user.shipper? %>
-        <td><%= link_to 'edit-button', edit_shipment_path(shipment) %></td>
-        <td><%= link_to 'delete-button', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_shipment_path(shipment), class: "btn btn-info" %></td>
+        <td><%= link_to 'Delete', shipment, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
     <% end %>
