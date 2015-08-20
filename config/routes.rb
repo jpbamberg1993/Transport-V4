@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   root 'shipments#index'
 
+  # => What is this? - Chris
   resources :memberships do
     put :accepted
     put :rejected
