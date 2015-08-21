@@ -18,8 +18,17 @@
  @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.container {
+
+}
+
 body {
   padding-top: 50px;
+}
+
+.new_user {
+
+  padding-top: 15px;
 }
 
 .center {
@@ -34,21 +43,24 @@ th {
 
 h1, h2, h3 {
   line-height: 1;
-
+  text-align: center;
 }
 
 h2 {
   letter-spacing: -1.2;
 }
 
+/* header */
+
 .cloud-logo-header {
   float: left;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
   color: white;
   font-weight: bold;
+
 }
 
 .navbar-fixed-top,
@@ -67,4 +79,35 @@ h2 {
 
 .img-responsive {
   margin-left: 100px;
+}
+
+/* footer */
+
+$gray-light: #777;
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-light;
+  color: gray;
+  font-weight: bold;
+  a {
+
+    color: gray;
+    &:hover {
+      color: gray;
+      text-decoration: none;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
 }
