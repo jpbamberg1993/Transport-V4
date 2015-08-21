@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'devise' 												# For user authorization
 gem 'rails_12factor' 								# For Heroku optimization
 gem 'rails', '4.2.3'			      		# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'pg'														# Use postgresql as the database for Active Record
 gem 'sass-rails', '~> 5.0' 					# Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'					# Use Uglifier as compressor for JavaScript assets

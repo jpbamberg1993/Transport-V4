@@ -3,6 +3,8 @@
 <head>
   <title>Transportation Procurement</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
@@ -32,9 +34,9 @@
         <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
     <%= yield %>
-    <%= render 'layouts/footer' %>
-  </div>
 
+  </div>
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>

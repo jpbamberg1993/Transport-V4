@@ -16,10 +16,27 @@
 
 
  @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap";
 
+body {
+  padding-top: 50px;
+}
 
-.footer {
-  background: #606c80;
+.center {
+  text-align: center;
+  h1 { margin-bottom: 10px;
+  }
+}
 
+th {
+   text-align: center;
+}
+
+h1, h2, h3 {
+  line-height: 1;
+
+}
+
+h2 {
+  letter-spacing: -1.2;
 }

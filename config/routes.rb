@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   get 'layouts/header'
   get 'layouts/footer'
   get 'static_pages/help'
+  get 'static_pages/home'
 
   resources :offers
   resources :shipments
   devise_for :users
 
   root 'shipments#index'
+  #root 'static_pages#home'
 
   # => What is this? - Chris
   resources :memberships do
