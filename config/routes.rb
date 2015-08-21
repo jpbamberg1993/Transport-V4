@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_shipments
   get 'static_pages/home'
   get 'layouts/header'
   get 'layouts/footer'
@@ -8,6 +9,10 @@ Rails.application.routes.draw do
   resources :offers
   resources :shipments
   devise_for :users
+
+  get "/shipments/:id/add_carrier/:carrier_id" => "shipments#add_carrier", as: :add_carrier
+
+  post "/user_shipments" => "user_shipments#create", as: :create_user_shipment
 
   root 'shipments#index'
   #root 'static_pages#home'
