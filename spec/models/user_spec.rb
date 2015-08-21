@@ -1,10 +1,10 @@
 require 'rails_helper'
 require 'user'
 
-# describe User do
-# 	let(:user) { User.new }
-# 	subject { user }
+Rails.describe User, :type => :model do
+	it "Should create company name" do
+		mac = User.create!(company_name: 'macen')
 
-# 	its(:company_name) { should == '0 Shipper' }
-# 	its(:role) { should == 'Shipper' || 'Carrier'}
-# end
+		expect(User.company_name).to eq([mac])
+	end
+end
