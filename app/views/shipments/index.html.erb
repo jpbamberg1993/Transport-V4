@@ -3,7 +3,7 @@
 <h1>Listing Shipments</h1>
 
 <table class="table table-striped">
-  <thead>
+  <thead class="table-header">
     <tr>
       <th>Origin</th>
       <th>Destination</th>
@@ -29,10 +29,10 @@
       <% if current_user.carrier? %>
         <td><%= shipment.company_name %></td>
       <% end %>
-        <td><%= link_to 'View', shipment, class: "btn btn-primary" %></td>
+        <td><%= link_to 'View', shipment%></td>
       <% if current_user.shipper? %>
-        <td><%= link_to 'Edit', edit_shipment_path(shipment), class: "btn btn-info" %></td>
-        <td><%= link_to 'Delete', shipment, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_shipment_path(shipment)%></td>
+        <td><%= link_to 'Delete', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
     <% end %>
@@ -42,5 +42,5 @@
 <br>
 
 <% if current_user.shipper? %>
-  <%= link_to 'Create a new shipment-button', new_shipment_path %>
+  <div class="create-shipment"><%= link_to 'Create a new shipment', new_shipment_path %></div>
 <% end %>

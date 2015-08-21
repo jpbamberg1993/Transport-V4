@@ -1,8 +1,9 @@
 <div class="center jumbotron">
 
+  <br />
   <h1>Welcome to C.L.O.S.E.</h1>
   <br />
-  <br />
+
   <h3><strong>C</strong>loud.<strong>L</strong>ogistics.<strong>O</strong>utbound.<strong>S</strong>hipping.<strong>E</strong>nvironment</h3>
 
   <br />
@@ -11,8 +12,11 @@
 
   </h2>
 
-  <%= link_to "Create your account!", root_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "Create your account!", new_user_registration_path, class: "btn btn-lg btn-primary" %><br />
+  <br />
+  <%= link_to "Already have an account? Log in!", new_user_session_path, class: "btn btn-lg btn-primary" %>
 </div>
+
 
 <div class="cl-logo"><%= link_to image_tag("cloud-logistics-logo.png", alt: "Cloud Logistics Logo"), 'http://www.gocloudlogistics.com/' %></div>
 

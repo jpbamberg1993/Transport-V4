@@ -1,9 +1,13 @@
 // Place all the styles related to the Shipments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.shipment-table {
-  a {
-    color: white;
+.shipment-table, .create-shipment {
+  a:hover {
+    color: #337ab7;
     text-decoration: none;
   }
+}
+
+.table {
+  text-align: center;
 }
