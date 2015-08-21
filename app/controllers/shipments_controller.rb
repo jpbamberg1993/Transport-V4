@@ -20,6 +20,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/new
   def new
     @shipment = Shipment.new
+    @carriers = User.list_carriers
   end
 
   # GET /shipments/1/edit
@@ -36,10 +37,14 @@ class ShipmentsController < ApplicationController
   # POST /shipments
   # POST /shipments.json
   def create
-    @shipment = Shipment.new(shipment_params)
 
+    @shipment = Shipment.new(shipment_params)
     respond_to do |format|
       if @shipment.save
+        params['carriers'].each do |carrier|
+          Offer.create(user_id: carrier, shipment: @shipment)
+          puts "created offer (#{carrier})"
+        end
         UserShipment.create( shipment_id: @shipment.id, user_id: current_user.id, role: current_user.role )
         format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
         format.json { render :show, status: :created, location: @shipment }
@@ -90,7 +95,7 @@ class ShipmentsController < ApplicationController
                       :equipment_type,
                       :minimum_commitment,
                       :maximum_commitment,
-                      :cost)
+                      :cost, :users)
     end
 
   def require_permission

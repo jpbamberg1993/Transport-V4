@@ -15,6 +15,7 @@ describe Shipment do
 	 	expect(shipment).to be_invalid
 	end
 
+	# insures instantiation
 	describe 'instantiation' do
 		let!(:shipment) { build(:shipment) }
 

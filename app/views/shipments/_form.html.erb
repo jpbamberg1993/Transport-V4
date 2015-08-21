@@ -50,6 +50,11 @@
     <%= f.number_field :cost %>
   </div>
 
+  <div class="field">
+    <h4>Drop down box to show the below links</h4>
+    <%= render 'choose_carriers', collection: @carriers %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
