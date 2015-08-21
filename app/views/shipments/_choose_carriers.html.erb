@@ -1,4 +1,4 @@
 <%= content_tag_for(:div, @carriers) do |carrier| %>
-  <%= link_to carrier.company_name %>
-  <%#= link_to( carrier.company_name,  UserShipment.create(shipment_id: params[:id], user_id: carrier.id, role: "carrier") ) %>
+  <%#= link_to @carrier.company_name %>
+  <%= link_to "#{carrier.company_name}", add_carrier_path(@shipment, carrier) %>
 <% end %>
