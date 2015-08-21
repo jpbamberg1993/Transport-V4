@@ -18,8 +18,6 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
-.footer {
-  background: #606c80;
-
-}
+ th {
+   text-align: center;
+ }
