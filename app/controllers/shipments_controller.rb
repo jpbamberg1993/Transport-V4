@@ -1,6 +1,17 @@
 class ShipmentsController < ApplicationController
   before_filter :require_permission, only: [:edit, :update, :destroy]
-  before_action :set_shipment, only: [:show, :edit, :update, :destroy]
+  before_action :set_shipment, only: [:show, :edit, :update, :destroy, :add_carrier]
+
+
+  def add_carrier
+    @carrier = User.find params[:carrier_id]
+    @shipment.user_shipments.create(
+      user: @carrier,
+      role: "carrier"
+    )
+    @offers = @shipment.offers
+    render 'show'
+  end
 
   # GET /shipments
   # GET /shipments.json
@@ -12,8 +23,10 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1
   # GET /shipments/1.json
   def show
+  #  @shipment = Shipment.where params[:id]
     @offer = Offer.new
-    @offers = Offer.list_for_this_shipment(params[:id])
+    @offers = @shipment.offers # Offer.list_for_this_shipment(params[:id])
+    # @shipment.offers
     @carriers = User.list_carriers
   end
 
