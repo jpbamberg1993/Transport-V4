@@ -36,7 +36,21 @@ shipments = 3.times do |n|
   Shipment.create(origin: rand_loc, destination: rand_loc, mode_of_transportation: "Full load", equipment_type: "Box Truck", minimum_commitment: 0, maximum_commitment: 0, cost: 100)
 end
 
-# => Create UserShipments
+# => Create UserShipments for Shippers
 UserShipment.create(user_id: 1, shipment_id: 1, role: 'shipper')
 UserShipment.create(user_id: 2, shipment_id: 2, role: 'shipper')
 UserShipment.create(user_id: 3, shipment_id: 3, role: 'shipper')
+
+# => Create UserShipments for Carriers
+
+# => For carrier0@example.com
+UserShipment.create(user_id: 6, shipment_id: 1, role: 'carrier')
+UserShipment.create(user_id: 6, shipment_id: 2, role: 'carrier')
+UserShipment.create(user_id: 6, shipment_id: 3, role: 'carrier')
+
+# => For carrier1@example.com
+UserShipment.create(user_id: 7, shipment_id: 1, role: 'carrier')
+UserShipment.create(user_id: 7, shipment_id: 2, role: 'carrier')
+
+# => For carrier2@example.com
+UserShipment.create(user_id: 8, shipment_id: 1, role: 'carrier')

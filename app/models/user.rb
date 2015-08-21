@@ -31,4 +31,30 @@ class User < ActiveRecord::Base
     self.role == "carrier"
   end
 
+  # => Methods to help testing seeds in console - Chris
+  # => Remove before finishing
+  def self.see_id_and_roles
+    self.all.each do |u|
+      puts "================="
+      puts "id: #{u.id}"
+      puts "name: #{u.company_name}"
+    end
+  end
+
+  # => To see shipments that each carrier can view
+  def self.see_carrier_shipments
+    self.where(role: 'carrier').each do |u|
+      puts "==================================="
+      puts "id: #{u.id}"
+      puts "#{u.company_name}"
+      puts "#{u.shipments.count} shipments"
+      if u.shipments.count > 0
+        u.shipments.each do |s|
+          puts "Name: #{s.shipper.company_name}"
+          puts "id: #{s.shipper.id}"
+        end
+      end
+    end
+  end
+
 end
