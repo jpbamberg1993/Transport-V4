@@ -2,7 +2,6 @@ class ShipmentsController < ApplicationController
   before_filter :require_permission, only: [:edit, :update, :destroy]
   before_action :set_shipment, only: [:show, :edit, :update, :destroy, :add_carrier]
 
-
   def add_carrier
     @carrier = User.find params[:carrier_id]
     @shipment.user_shipments.create(
