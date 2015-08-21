@@ -36,6 +36,7 @@
 <% if shipper? %>
 
   <% if @offers.count > 0 %>
+    <h4>Submitted Offers</h4>
     <div class="placed_offers">
       <thead>
         <tr>
@@ -51,10 +52,11 @@
     </div>
 
   <% else %>
-    <p>Sorry, no offers at this time.</p>
+    <h4>Sorry, no offers at this time.</h4>
   <% end %>
 
   <div class="">
+    <h4>Drop down box to show the below links</h4>
     <%= render 'choose_carriers', collection: @carriers %>
   </div>
 <% end %>

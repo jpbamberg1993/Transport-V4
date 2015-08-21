@@ -11,16 +11,16 @@
     <% if current_user.carrier? %>
       <th>Company</th>
     <% end %>
-      <th>Show</th>
+      <th>Details</th>
     <% if current_user.shipper? %>
-      <th>Edit</th>
-      <th>Destroy</th>
+      <th>Update</th>
+      <th>Delete</th>
     <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="shipment-table">
     <% @shipments.each do |shipment| %>
       <tr>
         <td><%= shipment.origin %></td>
@@ -29,10 +29,10 @@
       <% if current_user.carrier? %>
         <td><%= shipment.company_name %></td>
       <% end %>
-        <td><%= link_to 'Show', shipment %></td>
+        <td><%= link_to 'View', shipment, class: "btn btn-primary" %></td>
       <% if current_user.shipper? %>
-        <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
-        <td><%= link_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_shipment_path(shipment), class: "btn btn-info" %></td>
+        <td><%= link_to 'Delete', shipment, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
     <% end %>
@@ -42,5 +42,5 @@
 <br>
 
 <% if current_user.shipper? %>
-  <%= link_to 'New Shipment', new_shipment_path %>
+  <%= link_to 'Create a new shipment-button', new_shipment_path %>
 <% end %>

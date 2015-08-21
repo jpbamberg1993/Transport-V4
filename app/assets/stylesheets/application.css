@@ -15,24 +15,11 @@
  */
 
 
-#new_user{
-  margin: 0, auto;
-}
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
 
 .footer {
   background: #606c80;
-  
+
 }
-
-
-
-
-
-
-
-
-
-
-
-@import "bootstrap-sprockets";
-@import "bootstrap";

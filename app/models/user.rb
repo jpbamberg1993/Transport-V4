@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
   validates :company_name, presence: true
   validates :role, presence: true
 
-  # def shipper?(current_user)
-  #   current_user.role == "shipper"
-  # end
+  def self.list_carriers
+    self.where(role: 'carrier')
+  end
 
   def posted_shipments
     user_shipments.where(role: 'shipper').map(&:shipment)
