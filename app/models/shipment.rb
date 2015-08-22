@@ -29,7 +29,6 @@ class Shipment < ActiveRecord::Base
   end
 
   # def self.to_csv(attributes = company_name, options = {})
-
   #   CSV.generate(options) do |csv|
   #   csv.add_row attributes
 
@@ -42,8 +41,8 @@ class Shipment < ActiveRecord::Base
 
   def self.to_csv_threw_bar(options = {})
     CSV.generate(options) do |csv|
-      csv.add_row column_names + self.bar.column_names
-
+      csv.add_row origin destination mode_of_transportation equipment_type minimum_commitment maximum_commitment cost created_at updated_at
+      
       all.each do |shipment|
         values = shipment.attributes.values
         # in case field missing will gets ommited
