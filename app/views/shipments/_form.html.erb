@@ -29,14 +29,14 @@
         <%= f.label :minimum_commitment %>
         <%#= f.number_field :minimum_commitment %>
         <%= f.select :minimum_commitment, (1..500) %>
-        No. of trucks per day
+        <strong>no. of trucks per day</strong>
 
         <%= f.label :maximum_commitment %>
         <%#= f.number_field :minimum_commitment %>
         <%= f.select :maximum_commitment, (1..500) %>
-        No. of trucks per day<br><br />
+        <strong>no. of trucks per day</strong><br><br />
 
-        <%= f.label :cost %> in US$ - flat-rate<br>
+        <%= f.label :cost %><strong>in US$ - flat-rate</strong><br>
         <%= f.number_field :cost, class: 'form-control' %>
 
         <h4>Drop down box to show the below links</h4>

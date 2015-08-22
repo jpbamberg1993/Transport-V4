@@ -29,7 +29,7 @@ body {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: #5872a3;
-  background-color: #eee;
+  background-color: #B2B2B2;
   overflow: hidden;
 }
 
@@ -111,7 +111,6 @@ footer {
   color: gray;
   font-weight: bold;
   a {
-
     color: gray;
     &:hover {
       color: gray;
@@ -347,4 +346,20 @@ input[type="reset"], input[type="submit"] {
   z-index: 1000;
   top: 110px;
   left: 30%;
+}
+
+.log-in {
+  margin-left: 25px;
+}
+
+#user_remember_me {
+  margin-left: 0;
+}
+
+.a2a_kit {
+  float: left;
+}
+
+.team-credits {
+  margin-left: 150px;
 }
