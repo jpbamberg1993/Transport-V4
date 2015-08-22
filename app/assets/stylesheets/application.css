@@ -133,6 +133,29 @@ footer {
   margin-top: 15px;
 }
 
-.cl-logo {
-  margin-left: 200px;
+.ri {
+	position: relative;
+	max-width: 80%;
+	top: 50%;
+	left: 15%;
+	border-radius: 3px;
+  /*box-shadow: 0 3px 6px rgba(0,0,0,0.9);*/
+}
+
+.ri:empty {
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+@media screen and (orientation: portrait) {
+  .ri { max-width: 90%; }
+}
+
+@media screen and (orientation: landscape) {
+  .ri { max-height: 90%; }
 }
