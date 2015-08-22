@@ -130,7 +130,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
-  padding-right: 83%;  
+  padding-right: 83%;
 }
 button[disabled],
 html input[disabled] {
@@ -4639,7 +4639,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse {
   background-color: #5872a3;
-  border-color: #080808;
+  border-color: none;
   height: 68px;
 
 }
