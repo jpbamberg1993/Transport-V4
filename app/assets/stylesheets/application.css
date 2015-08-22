@@ -63,6 +63,13 @@ h1 {
   font-weight: bold;
 }
 
+.navbar-inverse {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+
+
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
