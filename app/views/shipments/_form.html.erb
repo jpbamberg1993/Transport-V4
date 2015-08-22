@@ -1,62 +1,49 @@
-<%= form_for(@shipment) do |f| %>
-  <% if @shipment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shipment.errors.count, "error") %> prohibited this shipment from being saved:</h2>
+<br />
+<div class="row">
+  <div class="col-md-4 col-md-offset-0">
+    <%= form_for(@shipment) do |f| %>
+      <% if @shipment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@shipment.errors.count, "error") %> prohibited this shipment from being saved:</h2>
 
-      <ul>
-      <% @shipment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @shipment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :origin %><br>
-    <%= f.text_field :origin %>
+        <%= f.label :origin %><br>
+        <%= f.text_field :origin, class: 'form-control' %>
+
+        <%= f.label :destination %><br>
+        <%= f.text_field :destination, class: 'form-control' %>
+
+        <%= f.label :mode_of_transportation %><br>
+        <%= f.select :mode_of_transportation, ['Select One', 'Full load', 'Less than full load'], class: 'form-control' %><br />
+
+        <%= f.label :equipment_type %><br />
+        <%= f.select :equipment_type, ['Select One', 'Semi / Tractor-trailer', 'Van'] %><br>
+
+        <%= f.label :minimum_commitment %><br>
+        <%#= f.number_field :minimum_commitment %>
+        <%= f.select :minimum_commitment, (1..500) %>
+        No. of trucks per day
+
+        <%= f.label :maximum_commitment %><br>
+        <%#= f.number_field :minimum_commitment %>
+        <%= f.select :maximum_commitment, (1..500) %>
+        No. of trucks per day<br>
+
+        <%= f.label :cost %> in US$ - flat-rate<br>
+        <%= f.number_field :cost, class: 'form-control' %>
+
+        <h4>Drop down box to show the below links</h4>
+        <%= render 'choose_carriers_at_new_shipment', collection: @carriers %>
+        <br>
+        <%= f.submit "Create shipment", class: "btn btn-primary" %>
+
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :destination %><br>
-    <%= f.text_field :destination %>
-  </div>
-
-  <div class="field">
-    <%= f.label :mode_of_transportation %><br>
-    <%= f.select :mode_of_transportation, ['Select One', 'Full load', 'Less than full load'] %>
-  </div>
-
-  <div class="field">
-    <%= f.label :equipment_type %><br>
-    <%= f.select :equipment_type, ['Select One', 'Semi / Tractor-trailer', 'Van'] %><br>
-  </div>
-
-  <div class="field">
-    <%= f.label :minimum_commitment %><br>
-    <%#= f.number_field :minimum_commitment %>
-    <%= f.select :minimum_commitment, (1..500) %>
-    No. of trucks per day
-  </div>
-
-  <div class="field">
-    <%= f.label :maximum_commitment %><br>
-    <%#= f.number_field :minimum_commitment %>
-    <%= f.select :maximum_commitment, (1..500) %>
-    No. of trucks per day
-  </div>
-
-  <div class="field">
-    <%= f.label :cost %> in US$ - flat-rate<br>
-    <%= f.number_field :cost %>
-  </div>
-
-  <div class="field">
-    <h4>Drop down box to show the below links</h4>
-    <%= render 'choose_carriers_at_new_shipment', collection: @carriers %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>
+</div>
