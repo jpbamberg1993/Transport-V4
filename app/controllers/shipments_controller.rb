@@ -53,10 +53,6 @@ class ShipmentsController < ApplicationController
     @shipment = Shipment.new(shipment_params)
     respond_to do |format|
       if @shipment.save
-        params['carriers'].each do |carrier|
-          Offer.create(user_id: carrier, shipment: @shipment)
-          puts "created offer (#{carrier})"
-        end
         UserShipment.create( shipment_id: @shipment.id, user_id: current_user.id, role: current_user.role )
         format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
         format.json { render :show, status: :created, location: @shipment }
