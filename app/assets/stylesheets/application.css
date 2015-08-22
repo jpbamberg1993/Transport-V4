@@ -361,5 +361,5 @@ input[type="reset"], input[type="submit"] {
 }
 
 .team-credits {
-  margin-left: 150px;
+  float: right;
 }
