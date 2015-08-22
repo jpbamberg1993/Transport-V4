@@ -1,7 +1,15 @@
 <% provide(:title, 'Transportation Procurement') %>
 <div class="center jumbotron">
-
+  <div id="clouds">
+  	<div class="cloud x1"></div>
+  	<!-- Time for multiple clouds to dance around -->
+  	<div class="cloud x2"></div>
+  	<div class="cloud x3"></div>
+  	<div class="cloud x4"></div>
+  	<div class="cloud x5"></div>
+  </div>
   <br />
+  <div class="welcome-text">
   <h1>Welcome to C.L.O.S.E.</h1>
   <br />
 
@@ -13,9 +21,10 @@
 
   </h2>
 
-  <%= link_to "Create your account!", new_user_registration_path, class: "btn btn-lg btn-primary" %><br />
+  <%= link_to "Create your account", new_user_registration_path, class: "btn btn-lg btn-primary" %><br />
   <br />
-  <%= link_to "Go to Shipments!", new_user_session_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "Go to Shipments", new_user_session_path, class: "btn btn-lg btn-primary" %>
+</div>
 </div>
 
 
