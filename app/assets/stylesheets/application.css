@@ -31,6 +31,7 @@ body {
   color: #5872a3;
   background-color: #B2B2B2;
   overflow: hidden;
+  background-size: cover;
 }
 
 .new_user {
@@ -130,44 +131,6 @@ footer {
   }
 }
 
-/*
-
-.WrapFooterStretch {
-  width: 100%;
-  background-color: #606c80;
-  height: 168px;
-  font-size: 13px;
-}
-
-.WrapFooterStretch .WrapFooter a:hover {
-    color: #fff;
-}
-
-.WrapFooterStretch .WrapFooter {
-    position: relative;
-    background: inherit;
-    height: 100%;
-    width: 980px;
-    margin: auto;
-    color: #ced8e6;
-    text-align: left;
-    font-size: 13px;
-}
-
-.WrapFooterStretch ul {
-    margin-top: 0px;
-    list-style-type: none;
-    padding: 0;
-}
-
-.WrapFooterStretch .WrapFooter .FloatRight {
-    float: right;
-    width: 170px;
-    margin-top: 20px;
-}
-
-*/
-
 /* gravatar */
 
 .gravatar {
@@ -188,6 +151,7 @@ footer {
 	top: 50%;
 	left: 15%;
 	border-radius: 3px;
+
   /*box-shadow: 0 3px 6px rgba(0,0,0,0.9);*/
 }
 
@@ -225,7 +189,7 @@ input[type="reset"], input[type="submit"] {
   border-radius: none;
 }
 
-#clouds{
+#clouds {
 	padding: 100px 0;
 	background: #c9dbe9;
 	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
