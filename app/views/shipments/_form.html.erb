@@ -40,7 +40,7 @@
         <%= f.number_field :cost, class: 'form-control' %>
 
         <h4>Drop down box to show the below links</h4>
-        <%= render 'choose_carriers_at_new_shipment', collection: @carriers %>
+        <%= render 'choose_carriers', collection: @carriers %>
         <br>
         <%= f.submit "Create shipment", class: "btn btn-primary" %>
 
