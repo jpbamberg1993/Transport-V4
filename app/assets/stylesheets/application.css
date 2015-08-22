@@ -28,7 +28,7 @@ body {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  color: inherit;
+  color: #5872a3;
   background-color: #eee;
 }
 
@@ -92,6 +92,7 @@ h1 {
 
 .navbar-right {
   padding-top: 10px;
+  padding-right: 10px;
 }
 
 .img-responsive {
