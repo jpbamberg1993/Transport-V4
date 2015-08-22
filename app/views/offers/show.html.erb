@@ -1,11 +1,11 @@
 <p>
-  <strong>Amount:</strong>
+  <strong>Quote Amount:</strong>
   <%= @offer.amount %>
   <br>
   <% if @offer.accepted == true %>
-  	<%= 'Your offer was accepted' %>
+  	<%= 'Your quote was accepted' %>
   <% else %>
-  	<%= 'Your offer has not been accepted yet' %>
+  	<%= 'Your quote is being reviewed' %>
   <% end %>
 </p>
 
