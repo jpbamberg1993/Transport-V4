@@ -8,11 +8,14 @@
       <th>Origin</th>
       <th>Destination</th>
       <th>Cost</th>
-    <% if current_user.carrier? %>
+    <% if carrier? %>
       <th>Company</th>
     <% end %>
       <th>Details</th>
-    <% if current_user.shipper? %>
+    <% if carrier? %>
+      <th>Offer Submitted?</th>
+    <% end %>
+    <% if shipper? %>
       <th>Update</th>
       <th>Delete</th>
     <% end %>
@@ -26,14 +29,24 @@
         <td><%= shipment.origin %></td>
         <td><%= shipment.destination %></td>
         <td>$<%= shipment.formatted_price %></td>
-      <% if current_user.carrier? %>
-        <td><%= shipment.company_name %></td>
-      <% end %>
+        <% if current_user.carrier? %>
+          <td><%= shipment.company_name %></td>
+        <% end %>
         <td><%= link_to 'View', shipment%></td>
-      <% if current_user.shipper? %>
-        <td><%= link_to 'Edit', edit_shipment_path(shipment)%></td>
-        <td><%= link_to 'Delete', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+<!-- START: Different link text for carriers,
+        depending on if they've made an offer to that shipment -->
+        <% if carrier? %>
+          <% if shipment.offers.include? current_user %>
+            <td>Yes</td>
+          <% else %>
+            <td>No</td>
+          <% end %>
+        <% end %>
+<!--                      END                      -->
+        <% if current_user.shipper? %>
+          <td><%= link_to 'Edit', edit_shipment_path(shipment)%></td>
+          <td><%= link_to 'Delete', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
