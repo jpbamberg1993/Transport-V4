@@ -19,11 +19,9 @@
 @import "bootstrap";
 
 .container {
-
 }
 
 body {
-  padding-top: 50px;
 }
 
 .new_user {
@@ -197,4 +195,15 @@ footer {
 
 @media screen and (orientation: landscape) {
   .ri { max-height: 90%; }
+}
+
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 0px solid #ddd;
+}
+
+button, html input[type="button"],
+input[type="reset"], input[type="submit"] {
+  padding-right: 10px;
+  width: 100%;
 }
