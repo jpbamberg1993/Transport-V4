@@ -9,8 +9,8 @@
         <%= f.label :company_name %><br />
         <%= f.text_field :company_name, autofocus: true, class: 'form-control' %><br />
 
-        Select user type:
-        <select class='form-control'><%= f.select :role, ['carrier', 'shipper'] %></select><br />
+        <%= f.label :role %>
+        <%= f.select :role, ['carrier', 'shipper'], class: 'form-control'%><br />
 
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, class: 'form-control' %>
