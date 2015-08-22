@@ -115,6 +115,40 @@ footer {
   }
 }
 
+.WrapFooterStretch {
+  width: 100%;
+  background-color: #606c80;
+  height: 168px;
+  font-size: 13px;
+}
+
+.WrapFooterStretch .WrapFooter a:hover {
+    color: #fff;
+}
+
+.WrapFooterStretch .WrapFooter {
+    position: relative;
+    background: inherit;
+    height: 100%;
+    width: 980px;
+    margin: auto;
+    color: #ced8e6;
+    text-align: left;
+    font-size: 13px;
+}
+
+.WrapFooterStretch ul {
+    margin-top: 0px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.WrapFooterStretch .WrapFooter .FloatRight {
+    float: right;
+    width: 170px;
+    margin-top: 20px;
+}
+
 /* buttons */
 
 #create-button {
@@ -132,6 +166,8 @@ footer {
 .gravatar_edit {
   margin-top: 15px;
 }
+
+/* CL image bottom */
 
 .ri {
 	position: relative;
