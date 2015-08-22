@@ -1,34 +1,33 @@
-<%= form_for(@offer) do |f| %>
-  <% if @offer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+<% provide(:title, 'Submit quote on lane') %>
+<br />
 
-      <ul>
-      <% @offer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="row">
+  <div class="col-md-2 col-md-offset-0">
+    <%= form_for(@offer) do |f| %>
+      <% if @offer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+          <ul>
+          <% @offer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <% if current_user.shipper? %>
-      <%= f.label :accepted %><br>
-      <%= f.check_box :accepted %>
+        <% if current_user.shipper? %>
+          <%= f.label :accepted %><br>
+          <%= f.check_box :accepted, class: 'form-control' %>
+        <% end %>
+
+        <% if current_user.carrier? %>
+          <%= f.label :amount %><br>
+          <%= f.number_field :amount, class: 'form-control' %>
+        <% end %>
+
+        <%= f.hidden_field( :shipment_id, :value => params[:id] ) %><br>
+        <%= f.submit "Submit quote", class: "btn btn-primary" %>
     <% end %>
   </div>
-
-
-  <div class="field">
-    <% if current_user.carrier? %>
-      <%= f.label :amount %><br>
-      <%= f.number_field :amount %>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.hidden_field( :shipment_id, :value => params[:id] ) %><br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

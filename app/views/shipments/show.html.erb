@@ -1,3 +1,6 @@
+<% provide(:title, 'Current quotes on shipment') %>
+<h1>Current quotes on shipment</h1>
+
 <p>
   <strong>Origin:</strong>
   <%= @shipment.origin %>
@@ -41,7 +44,7 @@
       <thead>
         <tr>
           <th>Company</th>
-          <th>Offer</th>
+          <th>Quote</th>
           <th>Accept</th>
           <th>Reject</th>
         </tr>
@@ -52,7 +55,7 @@
     </div>
 
   <% else %>
-    <h4>Sorry, no offers at this time.</h4>
+    <h4>No quotes have been submitted at this time.</h4>
   <% end %>
 
   <div class="">

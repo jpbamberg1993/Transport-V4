@@ -24,17 +24,17 @@
         <%= f.select :mode_of_transportation, ['Select One', 'Full load', 'Less than full load'], class: 'form-control' %><br />
 
         <%= f.label :equipment_type %><br />
-        <%= f.select :equipment_type, ['Select One', 'Semi / Tractor-trailer', 'Van'] %><br>
+        <%= f.select :equipment_type, ['Select One', 'Semi / Tractor-trailer', 'Van'] %><br><br />
 
-        <%= f.label :minimum_commitment %><br>
+        <%= f.label :minimum_commitment %>
         <%#= f.number_field :minimum_commitment %>
         <%= f.select :minimum_commitment, (1..500) %>
         No. of trucks per day
 
-        <%= f.label :maximum_commitment %><br>
+        <%= f.label :maximum_commitment %>
         <%#= f.number_field :minimum_commitment %>
         <%= f.select :maximum_commitment, (1..500) %>
-        No. of trucks per day<br>
+        No. of trucks per day<br><br />
 
         <%= f.label :cost %> in US$ - flat-rate<br>
         <%= f.number_field :cost, class: 'form-control' %>
