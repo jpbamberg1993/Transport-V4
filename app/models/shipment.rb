@@ -28,6 +28,34 @@ class Shipment < ActiveRecord::Base
     user_shipments.where(role: 'carrier').map(&:user)
   end
 
+  # def self.to_csv(attributes = company_name, options = {})
+
+  #   CSV.generate(options) do |csv|
+  #   csv.add_row attributes
+
+  #     all.each do |shipment|
+  #       values = shipment.attributes.slice(*attributes).values
+  #       csv.add_row values
+  #     end 
+  #   end
+  # end
+
+  def self.to_csv_threw_bar(options = {})
+    CSV.generate(options) do |csv|
+      csv.add_row column_names + self.bar.column_names
+
+      all.each do |shipment|
+        values = shipment.attributes.values
+        # in case field missing will gets ommited
+        if shipment.bar
+          values += shipment.attributes.values 
+        end
+
+        csv.add_row values
+      end
+    end 
+  end
+
   def formatted_price
     price_in_dollars = cost.to_f
     format("%.2f", price_in_dollars)
