@@ -68,7 +68,6 @@ h1 {
   padding-right: 25px;
 }
 
-
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
@@ -212,4 +211,9 @@ button, html input[type="button"],
 input[type="reset"], input[type="submit"] {
   padding-right: 10px;
   width: 100%;
+}
+
+.navbar {
+  border: none;
+  border-radius: none;
 }
