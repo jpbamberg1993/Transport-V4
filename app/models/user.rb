@@ -33,6 +33,9 @@ class User < ActiveRecord::Base
 
   # => Methods to help testing seeds in console - Chris
   # => Remove before finishing
+
+  # => Enter this in the console for easier testing
+  # => ActiveRecord::Base.logger.level = 1
   def self.see_id_and_roles
     self.all.each do |u|
       puts "================="
