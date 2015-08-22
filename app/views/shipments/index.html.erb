@@ -1,5 +1,17 @@
-<% provide(:title, 'Shipments List') %>
-<p id="notice"><%= notice %></p>
+<% if current_user %>
+
+<% provide(:title, current_user.company_name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for current_user %>
+        <%= current_user.company_name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+<% end %>
 
 <h1>List of Shipments</h1>
 

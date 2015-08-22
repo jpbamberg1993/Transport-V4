@@ -120,3 +120,15 @@ footer {
 #create-button {
   padding-right:
 }
+
+/* gravatar */
+
+.gravatar {
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
