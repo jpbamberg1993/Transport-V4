@@ -30,6 +30,12 @@ class Shipment < ActiveRecord::Base
     user_shipments.where(role: 'carrier').map(&:user)
   end
 
+  def carriers_not_added
+    all = User.where(role: 'carrier')
+    added = user_shipments.where(role: 'carrier', ).map(&:user)
+    return ( all - added )
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv.add_row(["id", "origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost", "created_at", "updated_at"])
@@ -37,24 +43,45 @@ class Shipment < ActiveRecord::Base
         values = foo.attributes.values
         csv.add_row values
       end
-    end 
+    end
   end
 
   # def self.to_csv_threw_bar(options = {})
   #   CSV.generate(options) do |csv|
   #     csv.add_row origin destination mode_of_transportation equipment_type minimum_commitment maximum_commitment cost created_at updated_at
-      
+
   #     all.each do |shipment|
   #       values = shipment.attributes.values
   #       # in case field missing will gets ommited
   #       if shipment.bar
-  #         values += shipment.attributes.values 
+  #         values += shipment.attributes.values
   #       end
 
   #       csv.add_row values
   #     end
-  #   end 
+  #   end
   # end
+
+  def create_user_shipment_collection(carrier_ids)
+    #if carrier_ids
+
+      result = []
+
+      carrier_ids.each do |id|
+        new_user_shipment = self.user_shipments.new(user_id: id, role: "carrier")
+
+        if new_user_shipment.save
+          result << new_user_shipment
+        else
+          result << "#{new_user_shipment.user.compcompany_name} was not saved"
+        end
+      end
+      return result
+      # => Needs something to display errors in
+      # => user_shipment creation in a helpful way for users
+    #end
+    #render :json => result
+  end
 
   def formatted_price
     price_in_dollars = cost.to_f
