@@ -6,13 +6,7 @@
         <li>
           <%= carrier.company_name %>
           <% user_id = carrier.id %>
-          <% shipment_id = @shipment.id %>
-          <% role = "carrier" %>
-          <% input = "{ :user_id => #{user_id},
-                       :shipment_id => #{shipment_id},
-                       :role => #{role}
-                      }" %>
-          <%= user_shipment_form.check_box("user_id", {}, input, 0) %>
+          <%= user_shipment_form.check_box("user_id", {:multiple => true}, user_id, nil) %>
         </li>
       <% end %>
     <% end %>
