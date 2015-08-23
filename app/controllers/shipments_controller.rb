@@ -72,6 +72,41 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1.json
   def update
 
+    carrier_ids = params[:shipment][:user_shipments_attributes]["0"][:user_id]
+    shipment_id = @shipment.id
+
+    if carrier_ids
+
+      carriers_added = []
+      add_errors = []
+
+      carrier_ids.each do |id|
+        new_user_shipment = @shipment.user_shipments.new(user_id: id, role: "carrier")
+
+        if new_user_shipment.save
+          carriers_added << new_user_shipment
+        else
+          carriers_not_added << new_user_shipment.user.company_name
+        end
+      end
+
+      # => Needs something to display errors in
+      # => user_shipment creation in a helpful way for users
+      #redirect_to @shipment
+      #render :json => carriers_added
+    end
+
+
+    
+    respond_to do |format|
+      if @shipment.update(shipment_params)
+        format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
+        format.json { render :show, status: :ok, location: @shipment }
+      else
+        format.html { render :edit }
+        format.json { render json: @shipment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /shipments/1
