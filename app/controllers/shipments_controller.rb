@@ -72,16 +72,6 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1.json
   def update
 
-    render plain: params.json
-    # respond_to do |format|
-    #   if @shipment.update(shipment_params)
-    #     format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @shipment }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @shipment.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # DELETE /shipments/1
