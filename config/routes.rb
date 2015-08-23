@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get "/shipments/:id/add_carrier/:carrier_id" => "shipments#add_carrier", as: :add_carrier
 
-  post "/user_shipments" => "user_shipments#create", as: :create_user_shipment
+  get "/shipments/:id/choose_carriers" => "shipments#choose_carriers", as: :choose_carriers
 
   root 'shipments#index'
   #root 'static_pages#home'

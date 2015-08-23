@@ -3,6 +3,8 @@ class Shipment < ActiveRecord::Base
   has_many :user_shipments, dependent: :destroy
   has_many :offers, dependent: :destroy
 
+  accepts_nested_attributes_for :user_shipments
+
   validates :origin, presence: :true
   validates :destination, presence: :true
   validates :mode_of_transportation, presence: :true

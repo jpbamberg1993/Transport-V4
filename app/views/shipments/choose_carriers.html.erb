@@ -1,0 +1,21 @@
+<%= form_for @shipment do |f| %>
+  <h1>Carriers:</h1>
+  <ul>
+    <%= f.fields_for :user_shipments do |user_shipment_form| %>
+      <% @carriers.each do |carrier| %>
+        <li>
+          <%= carrier.company_name %>
+          <% user_id = carrier.id %>
+          <% shipment_id = @shipment.id %>
+          <% role = "carrier" %>
+          <% input = "{ :user_id => #{user_id},
+                       :shipment_id => #{shipment_id},
+                       :role => #{role}
+                      }" %>
+          <%= user_shipment_form.check_box("user_id", {}, input, 0) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= f.submit %>
+<% end %>

@@ -55,11 +55,13 @@ class ShipmentsController < ApplicationController
   # POST /shipments.json
   def create
 
+    #render :json => params
+
     @shipment = Shipment.new(shipment_params)
     respond_to do |format|
       if @shipment.save
         UserShipment.create( shipment_id: @shipment.id, user_id: current_user.id, role: current_user.role )
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
+        format.html { redirect_to choose_carriers_path(@shipment), notice: 'Shipment was successfully created.' }
         format.json { render :show, status: :created, location: @shipment }
       else
         format.html { render :new }
@@ -71,15 +73,17 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1
   # PATCH/PUT /shipments/1.json
   def update
-    respond_to do |format|
-      if @shipment.update(shipment_params)
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' } 
-        format.json { render :show, status: :ok, location: @shipment }
-      else
-        format.html { render :edit }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
-      end
-    end
+
+    render plain: params.json
+    # respond_to do |format|
+    #   if @shipment.update(shipment_params)
+    #     format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @shipment }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @shipment.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /shipments/1
@@ -101,14 +105,33 @@ class ShipmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
       params.require(
-              :shipment).permit(
-                      :origin,
-                      :destination,
-                      :mode_of_transportation,
-                      :equipment_type,
-                      :minimum_commitment,
-                      :maximum_commitment,
-                      :cost, :users)
+        :shipment
+      ).permit(
+        :origin,
+        :destination,
+        :mode_of_transportation,
+        :equipment_type,
+        :minimum_commitment,
+        :maximum_commitment,
+        :cost,
+        :users,
+    # => UserShipment params
+        :user_shipment_attributes => [
+          :user_id,
+          :shipment_id,
+          :role
+        ]
+      )
+    end
+
+    def user_shipment_params
+      params.require(
+        :user_shipment
+      ).permit(
+      :user_id,
+      :shipment_id,
+      :role
+      )
     end
 
   def require_permission
