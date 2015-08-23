@@ -28,7 +28,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1
   # GET /shipments/1.json
   def show
-    @shipment = Shipment.where params[:id]
+    @shipment = Shipment.find params[:id]
     @offer = Offer.new
     @offers = @shipment.offers # Offer.list_for_this_shipment(params[:id])
     # @shipment.offers
@@ -83,7 +83,7 @@ class ShipmentsController < ApplicationController
       result = @shipment.create_user_shipment_collection(carrier_ids)
 
       respond_to do |format|
-        format.html { redirect_to @shipment, notice: carriers_notice(result) }
+        format.html { redirect_to @shipment }
         format.json { render :json => result, status: :ok, location: @shipment }
       end
     else
