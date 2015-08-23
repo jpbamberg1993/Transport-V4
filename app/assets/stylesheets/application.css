@@ -403,6 +403,7 @@ h1 { color: white }
 
 #slideshow-inner>ul>li>img {
     margin: auto;
+    width: 100%;
     height: 100%;
 }
 
