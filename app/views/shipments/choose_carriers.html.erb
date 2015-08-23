@@ -1,15 +1,4 @@
-<%= form_for @shipment do |f| %>
-  <h1>Carriers:</h1>
-  <ul>
-    <% @carriers.each do |carrier| %>
-      <li>
-        <%= carrier.company_name %>
-        <% user_id = carrier.id %>
-        <%= f.check_box("id", {:multiple => true}, user_id, nil) %>
-      </li>
-
 <% provide(:title, 'Select Carriers') %>
-
 <h1>Select carriers for this shipment</h1>
 
 <div class="row">
