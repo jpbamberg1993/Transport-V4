@@ -12,6 +12,11 @@ class ShipmentsController < ApplicationController
     render 'show'
   end
 
+  def choose_carriers
+    @carriers = User.list_carriers
+    @shipment = Shipment.find params[:id]
+  end
+
   # GET /shipments
   # GET /shipments.json
   def index
@@ -53,7 +58,7 @@ class ShipmentsController < ApplicationController
     respond_to do |format|
       if @shipment.save
         UserShipment.create( shipment_id: @shipment.id, user_id: current_user.id, role: current_user.role )
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
+        format.html { redirect_to choose_carriers_path(@shipment), notice: 'Shipment was successfully created.' }
         format.json { render :show, status: :created, location: @shipment }
       else
         format.html { render :new }
@@ -65,9 +70,36 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1
   # PATCH/PUT /shipments/1.json
   def update
+
+    carrier_ids = params[:shipment][:user_shipments_attributes]["0"][:user_id]
+    shipment_id = @shipment.id
+
+    if carrier_ids
+
+      carriers_added = []
+      add_errors = []
+
+      carrier_ids.each do |id|
+        new_user_shipment = @shipment.user_shipments.new(user_id: id, role: "carrier")
+
+        if new_user_shipment.save
+          carriers_added << new_user_shipment
+        else
+          carriers_not_added << new_user_shipment.user.company_name
+        end
+      end
+
+      # => Needs something to display errors in
+      # => user_shipment creation in a helpful way for users
+      #redirect_to @shipment
+      #render :json => carriers_added
+    end
+
+
+
     respond_to do |format|
       if @shipment.update(shipment_params)
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' } 
+        format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
         format.json { render :show, status: :ok, location: @shipment }
       else
         format.html { render :edit }
@@ -104,15 +136,23 @@ class ShipmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
       params.require(
-              :shipment).permit(
-                      :origin,
-                      :destination,
-                      :mode_of_transportation,
-                      :equipment_type,
-                      :minimum_commitment,
-                      :maximum_commitment,
-                      :cost, 
-                      :users)
+        :shipment
+      ).permit(
+        :origin,
+        :destination,
+        :mode_of_transportation,
+        :equipment_type,
+        :minimum_commitment,
+        :maximum_commitment,
+        :cost,
+        :users,
+    # => Nested UserShipment params
+        :user_shipment_attributes => [
+          :user_id,
+          :shipment_id,
+          :role
+        ]
+      )
     end
 
   def require_permission
@@ -123,7 +163,6 @@ class ShipmentsController < ApplicationController
 
   def filtered_shipments
     if current_user.carrier?
-      #Shipment.all
       current_user.carrier_shipments
     else
       current_user.posted_shipments

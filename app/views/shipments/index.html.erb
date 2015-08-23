@@ -70,4 +70,6 @@
   <div class="create-shipment"><%= link_to 'Create a new shipment', new_shipment_path %></div>
 <% end %>
 
-<%= link_to 'Export Data', shipments_export_path(format: "csv") %> 
+<div class="export-data">
+  <%= link_to 'Export Data', shipments_export_path(format: "csv") %>
+</div>

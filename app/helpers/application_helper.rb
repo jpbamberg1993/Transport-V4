@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def carrier_list
+    carrier_list = []
+    carrier_list << User.where(role: 'carrier').each
+  end
+
   def shipper?
     current_user.role == "shipper"
   end
