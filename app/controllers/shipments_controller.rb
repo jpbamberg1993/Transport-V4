@@ -14,7 +14,8 @@ class ShipmentsController < ApplicationController
 
   def choose_carriers
     @shipment = Shipment.find params[:id]
-    @carriers = @shipment.carriers
+    @carriers = @shipment.carriers_not_added
+    #render :json => @carriers
   end
 
   # GET /shipments
