@@ -71,5 +71,7 @@
 <% end %>
 
 <div class="export-data">
-  <%= link_to 'Export Data', shipments_export_path(format: "csv") %>
+  <% if current_user.shipper? %>
+    <%= link_to 'Export Data', shipments_export_path(format: "csv") %>
+  <% end %>
 </div>

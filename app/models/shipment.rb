@@ -39,7 +39,7 @@ class Shipment < ActiveRecord::Base
         csv.add_row values
       end
     end 
-  end
+  end 
 
   def formatted_price
     price_in_dollars = cost.to_f
