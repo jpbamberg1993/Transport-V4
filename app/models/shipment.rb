@@ -36,6 +36,28 @@ class Shipment < ActiveRecord::Base
     return ( all - added )
   end
 
+  def has_offer?(user)
+    shipment = self
+    offer = Offer.where( user_id: user.id, shipment_id: shipment.id )
+
+    if offer.empty?
+      return false
+    else
+      return true
+    end
+  end
+
+  def user_offer(user)
+    shipment = self
+    offer = Offer.where( user_id: user.id, shipment_id: shipment.id ).take
+    offer.amount
+  end
+
+  def set_offer(user)
+    shipment = self
+    offer = Offer.where( user_id: user.id, shipment_id: shipment.id ).take
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv.add_row(["id", "origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost", "created_at", "updated_at"])

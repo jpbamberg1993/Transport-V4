@@ -56,16 +56,18 @@
   <% else %>
     <h4>No quotes have been submitted at this time.</h4>
   <% end %>
-
-  <div class="">
-    <h4>Drop down box to show carriers</h4>
-    <%#= render 'carriers' %>
-  </div>
-
 <% end %>
 
+
 <% if carrier? %>
-  <%= render "offers/form" %>
+  <% if @shipment.has_offer?(current_user) %>
+    <%= @shipment.user_offer(current_user) %>
+    <% @offer = @shipment.set_offer(current_user) %>
+    <%= link_to "Change amount", edit_offer_path(@offer) %>
+    <br>
+  <% else %>
+    <%= render "offers/form" %>
+  <% end %>
 <% end %>
 
 <% if shipper? %>

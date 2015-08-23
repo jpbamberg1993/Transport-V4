@@ -48,7 +48,7 @@
 <!-- START: Different link text for carriers,
         depending on if they've made an offer to that shipment -->
         <% if carrier? %>
-          <% if shipment.offers.include? current_user %>
+          <% if shipment.has_offer?(current_user) %>
             <td>Yes</td>
           <% else %>
             <td>No</td>
