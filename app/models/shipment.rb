@@ -32,5 +32,4 @@ class Shipment < ActiveRecord::Base
     price_in_dollars = cost.to_f
     format("%.2f", price_in_dollars)
   end
-
 end
