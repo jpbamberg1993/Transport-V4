@@ -88,7 +88,7 @@ class ShipmentsController < ApplicationController
 
   # Export data table shipments - downloads csv
   def export
-    @data = Shipment.order(:origin)
+    @data = Shipment.order(:created_at)
     respond_to do |format|
       format.html { redirect_to root_url }
       format.csv { send_data @data.to_csv }

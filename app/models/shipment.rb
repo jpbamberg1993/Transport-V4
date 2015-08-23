@@ -28,32 +28,31 @@ class Shipment < ActiveRecord::Base
     user_shipments.where(role: 'carrier').map(&:user)
   end
 
-  # def self.to_csv(attributes = company_name, options = {})
-  #   CSV.generate(options) do |csv|
-  #   csv.add_row attributes
-
-  #     all.each do |shipment|
-  #       values = shipment.attributes.slice(*attributes).values
-  #       csv.add_row values
-  #     end 
-  #   end
-  # end
-
-  def self.to_csv_threw_bar(options = {})
+  def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv.add_row origin destination mode_of_transportation equipment_type minimum_commitment maximum_commitment cost created_at updated_at
-      
-      all.each do |shipment|
-        values = shipment.attributes.values
-        # in case field missing will gets ommited
-        if shipment.bar
-          values += shipment.attributes.values 
-        end
-
+      csv.add_row(["id", "origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost", "created_at", "updated_at"])
+      all.each do |foo|
+        values = foo.attributes.values
         csv.add_row values
       end
     end 
   end
+
+  # def self.to_csv_threw_bar(options = {})
+  #   CSV.generate(options) do |csv|
+  #     csv.add_row origin destination mode_of_transportation equipment_type minimum_commitment maximum_commitment cost created_at updated_at
+      
+  #     all.each do |shipment|
+  #       values = shipment.attributes.values
+  #       # in case field missing will gets ommited
+  #       if shipment.bar
+  #         values += shipment.attributes.values 
+  #       end
+
+  #       csv.add_row values
+  #     end
+  #   end 
+  # end
 
   def formatted_price
     price_in_dollars = cost.to_f
