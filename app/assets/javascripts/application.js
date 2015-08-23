@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$('.enter_link').click(function() {
+        $(this).parent().fadeOut(500);
+ });
