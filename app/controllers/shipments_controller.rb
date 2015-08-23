@@ -13,8 +13,8 @@ class ShipmentsController < ApplicationController
   end
 
   def choose_carriers
-    @carriers = User.list_carriers
     @shipment = Shipment.find params[:id]
+    @carriers = @shipment.carriers
   end
 
   # GET /shipments
@@ -27,7 +27,6 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1
   # GET /shipments/1.json
   def show
-  #  @shipment = Shipment.where params[:id]
     @offer = Offer.new
     @offers = @shipment.offers # Offer.list_for_this_shipment(params[:id])
     # @shipment.offers
