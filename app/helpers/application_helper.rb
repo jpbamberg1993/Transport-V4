@@ -21,4 +21,15 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def carriers_notice(result)
+    notice = []
+
+    result.each do |c|
+      name = c.user.company_name || c
+      notice << name
+    end
+
+    return notice
+  end
 end
