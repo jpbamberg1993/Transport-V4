@@ -38,22 +38,6 @@ class Shipment < ActiveRecord::Base
     end 
   end
 
-  # def self.to_csv_threw_bar(options = {})
-  #   CSV.generate(options) do |csv|
-  #     csv.add_row origin destination mode_of_transportation equipment_type minimum_commitment maximum_commitment cost created_at updated_at
-      
-  #     all.each do |shipment|
-  #       values = shipment.attributes.values
-  #       # in case field missing will gets ommited
-  #       if shipment.bar
-  #         values += shipment.attributes.values 
-  #       end
-
-  #       csv.add_row values
-  #     end
-  #   end 
-  # end
-
   def formatted_price
     price_in_dollars = cost.to_f
     format("%.2f", price_in_dollars)
