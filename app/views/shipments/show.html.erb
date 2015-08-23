@@ -59,8 +59,8 @@
   <% end %>
 
   <div class="">
-    <h4>Drop down box to show the below links</h4>
-    <%= render 'choose_carriers' %>
+    <h4>Drop down box to show carriers</h4>
+    <%= render 'carriers' %>
   </div>
 
 <% end %>
@@ -70,6 +70,7 @@
 <% end %>
 
 <% if shipper? %>
+  <%= link_to 'Invite Carriers', choose_carriers_path(@shipment) %> |
   <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
 <% end %>
 

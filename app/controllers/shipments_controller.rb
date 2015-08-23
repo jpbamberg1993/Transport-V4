@@ -13,8 +13,8 @@ class ShipmentsController < ApplicationController
   end
 
   def choose_carriers
-    @carriers = User.list_carriers
     @shipment = Shipment.find params[:id]
+    @carriers = @shipment.carriers
   end
 
   # GET /shipments
@@ -27,11 +27,11 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1
   # GET /shipments/1.json
   def show
-  #  @shipment = Shipment.where params[:id]
+    @shipment = Shipment.where params[:id]
     @offer = Offer.new
     @offers = @shipment.offers # Offer.list_for_this_shipment(params[:id])
     # @shipment.offers
-    @carriers = User.list_carriers
+    @carriers = @shipment.carriers
   end
 
   # GET /shipments/new
@@ -72,38 +72,28 @@ class ShipmentsController < ApplicationController
   def update
 
     carrier_ids = params[:shipment][:user_shipments_attributes]["0"][:user_id]
-    shipment_id = @shipment.id
 
+    # IF update called from choose_carriers page,
+    # then make user_shipments
+    # IF update called from edit page,
+    # then update shipment
     if carrier_ids
+      #@shipment.create_user_shipment_collection(carrier_ids)
+      result = @shipment.create_user_shipment_collection(carrier_ids)
 
-      carriers_added = []
-      add_errors = []
-
-      carrier_ids.each do |id|
-        new_user_shipment = @shipment.user_shipments.new(user_id: id, role: "carrier")
-
-        if new_user_shipment.save
-          carriers_added << new_user_shipment
-        else
-          carriers_not_added << new_user_shipment.user.company_name
-        end
+      respond_to do |format|
+        format.html { redirect_to @shipment, notice: carriers_notice(result) }
+        format.json { render :json => result, status: :ok, location: @shipment }
       end
-
-      # => Needs something to display errors in
-      # => user_shipment creation in a helpful way for users
-      #redirect_to @shipment
-      #render :json => carriers_added
-    end
-
-
-
-    respond_to do |format|
-      if @shipment.update(shipment_params)
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shipment }
-      else
-        format.html { render :edit }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
+    else
+      respond_to do |format|
+        if @shipment.update(shipment_params)
+          format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
+          format.json { render :show, status: :ok, location: @shipment }
+        else
+          format.html { render :edit }
+          format.json { render json: @shipment.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
