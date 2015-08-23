@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :shipments
   devise_for :users
 
+  get 'export', to: 'shipments#export', as: :shipments_export # Route pointing to export action in shipments_controller
+
   get "/shipments/:id/add_carrier/:carrier_id" => "shipments#add_carrier", as: :add_carrier
 
   post "/user_shipments" => "user_shipments#create", as: :create_user_shipment

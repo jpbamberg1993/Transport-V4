@@ -49,7 +49,6 @@ class ShipmentsController < ApplicationController
   # POST /shipments
   # POST /shipments.json
   def create
-
     @shipment = Shipment.new(shipment_params)
     respond_to do |format|
       if @shipment.save
@@ -87,6 +86,15 @@ class ShipmentsController < ApplicationController
     end
   end
 
+  # Export data table shipments - downloads csv
+  def export
+    @data = Shipment.order(:created_at)
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.csv { send_data @data.to_csv }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shipment
@@ -103,7 +111,8 @@ class ShipmentsController < ApplicationController
                       :equipment_type,
                       :minimum_commitment,
                       :maximum_commitment,
-                      :cost, :users)
+                      :cost, 
+                      :users)
     end
 
   def require_permission
