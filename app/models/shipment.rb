@@ -31,7 +31,9 @@ class Shipment < ActiveRecord::Base
   end
 
   def carriers_not_added
-    user_shipments.where(role: 'carrier', ).map(&:user)
+    all = User.where(role: 'carrier')
+    added = user_shipments.where(role: 'carrier', ).map(&:user)
+    return ( all - added )
   end
 
   def self.to_csv(options = {})
