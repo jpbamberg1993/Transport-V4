@@ -12,6 +12,11 @@ class ShipmentsController < ApplicationController
     render 'show'
   end
 
+  def choose_carriers
+    @carriers = User.list_carriers
+    @shipment = Shipment.find params[:id]
+  end
+
   # GET /shipments
   # GET /shipments.json
   def index
