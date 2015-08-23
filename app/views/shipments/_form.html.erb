@@ -28,12 +28,12 @@
 
         <%= f.label :minimum_commitment %>
         <%#= f.number_field :minimum_commitment %>
-        <%= f.select :minimum_commitment, (1..500) %>
+        <%= f.select :minimum_commitment, (1..100) %>
         <strong>no. of trucks per day</strong>
 
         <%= f.label :maximum_commitment %>
         <%#= f.number_field :minimum_commitment %>
-        <%= f.select :maximum_commitment, (1..500) %>
+        <%= f.select :maximum_commitment, (1..100) %>
         <strong>no. of trucks per day</strong><br><br />
 
         <%= f.label :cost %><strong>in US$ - flat-rate</strong><br>
