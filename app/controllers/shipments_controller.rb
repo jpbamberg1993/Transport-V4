@@ -55,8 +55,6 @@ class ShipmentsController < ApplicationController
   # POST /shipments.json
   def create
 
-    #render :json => params
-
     @shipment = Shipment.new(shipment_params)
     respond_to do |format|
       if @shipment.save
