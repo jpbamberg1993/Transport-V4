@@ -570,7 +570,3 @@ input[type=radio]#button-5:checked~.arrows#arrow-4 { left: -73px }
     left: 25%;
     z-index: 1000;
 }
-
-$('.enter_link').click(function() {
-    $(this).parent().fadeOut(500);
- });
