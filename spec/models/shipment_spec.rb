@@ -21,8 +21,9 @@ describe Shipment do
 
 		it 'instantiates a shipment' do
 			expect(shipment.class.name).to eq("Shipment")
-
 		end
 	end
+
+	
 
 end

@@ -28,6 +28,7 @@ class Shipment < ActiveRecord::Base
     user_shipments.where(role: 'carrier').map(&:user)
   end
 
+  # Defines columns from database to download to csv
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv.add_row(["id", "origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost", "created_at", "updated_at"])
