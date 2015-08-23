@@ -72,14 +72,17 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1.json
   def update
 
-    carrier_ids = params[:shipment][:user_shipments_attributes]["0"][:user_id]
+    # => Accepts params for creating
+    # => new user_shipments.
+    # => Throws error if you try to update shipment
+    # => or send a blank update.
+    carrier_ids = params[:shipment][:id]
 
     # IF update called from choose_carriers page,
     # then make user_shipments
     # IF update called from edit page,
     # then update shipment
     if carrier_ids
-      #@shipment.create_user_shipment_collection(carrier_ids)
       result = @shipment.create_user_shipment_collection(carrier_ids)
 
       respond_to do |format|

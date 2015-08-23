@@ -31,6 +31,15 @@ class User < ActiveRecord::Base
     self.role == "carrier"
   end
 
+  def offer_made
+    offer = self.offers
+    if offer
+      return "No Offer Submitted"
+    else
+      return offer.amount
+    end
+  end
+
   # => Methods to help testing seeds in console - Chris
   # => Remove before finishing
 

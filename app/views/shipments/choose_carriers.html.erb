@@ -1,14 +1,12 @@
 <%= form_for @shipment do |f| %>
   <h1>Carriers:</h1>
   <ul>
-    <%= f.fields_for :user_shipments do |user_shipment_form| %>
-      <% @carriers.each do |carrier| %>
-        <li>
-          <%= carrier.company_name %>
-          <% user_id = carrier.id %>
-          <%= user_shipment_form.check_box("user_id", {:multiple => true}, user_id, nil) %>
-        </li>
-      <% end %>
+    <% @carriers.each do |carrier| %>
+      <li>
+        <%= carrier.company_name %>
+        <% user_id = carrier.id %>
+        <%= f.check_box("id", {:multiple => true}, user_id, nil) %>
+      </li>
     <% end %>
   </ul>
   <%= f.submit %>
