@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :user_shipments
   get 'static_pages/home'
   get 'static_pages/about'
+  #get 'static_pages/splash'
   get 'layouts/header'
   get 'layouts/footer'
   get 'static_pages/help'
