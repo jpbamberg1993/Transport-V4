@@ -1,6 +1,6 @@
-<% provide(:title, 'Current Quotes on Shipment') %>
+<% provide(:title, 'Current Lane Information') %>
 
-<h1>Current quotes on shipment</h1>
+<h1>Current lane information</h1>
 
 <p>
   <strong>Origin:</strong>
@@ -45,7 +45,7 @@
       <thead>
         <tr>
           <th>Company</th>
-          <th>Offer</th>
+          <th>Quote</th>
         </tr>
       </thead>
       <tbody>
@@ -71,7 +71,7 @@
 <% end %>
 
 <% if shipper? %>
-  <%= link_to 'Invite Carriers', choose_carriers_path(@shipment) %> |
+  <%= link_to 'Select Carriers', choose_carriers_path(@shipment) %> |
   <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
 <% end %>
 
