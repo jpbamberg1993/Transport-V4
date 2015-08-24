@@ -309,11 +309,23 @@ input[type="reset"], input[type="submit"] {
 	100% {margin-left: -500px;}
 }
 
+/*
+
 .welcome-text {
   position: absolute;
   z-index: 1000;
   top: 110px;
   left: 30%;
+}
+
+*/
+
+.welcome-text {
+  position: absolute;
+  z-index: 1000;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%)
 }
 
 .log-in {
