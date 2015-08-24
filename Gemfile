@@ -19,7 +19,7 @@ gem 'mailgun-ruby', '~>1.0.2'				# Sends emails
 # gem 'rspec', '~>3.0'								# TDD Gem
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
-# gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
+#gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 group :development, :test do
   gem 'byebug'										  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
