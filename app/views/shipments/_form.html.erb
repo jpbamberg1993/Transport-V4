@@ -4,7 +4,7 @@
     <%= form_for(@shipment) do |f| %>
       <% if @shipment.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@shipment.errors.count, "error") %> prohibited this shipment from being saved:</h2>
+          <h2><%= pluralize(@shipment.errors.count, "error") %> prohibited this lane from being saved:</h2>
 
           <ul>
           <% @shipment.errors.full_messages.each do |message| %>
@@ -43,7 +43,7 @@
           <%#= render 'choose_carriers', collection: @carriers %>
         <br>
 -->
-        <%= f.submit "Create shipment", class: "btn btn-primary" %>
+        <%= f.submit "Create new lane", class: "btn btn-primary" %>
 
     <% end %>
   </div>
