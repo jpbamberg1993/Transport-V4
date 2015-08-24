@@ -11,18 +11,19 @@
   <div class="welcome-text">
     <h1>Welcome to C.L.O.S.E.</h1>
     <br />
-
     <h3><strong>C</strong>loud.<strong>L</strong>ogistics.<strong>O</strong>utbound.<strong>S</strong>hipping.<strong>E</strong>nvironment</h3>
-
     <br />
-    <h2>
-
-    </h2>
-
-      <%= link_to "Create your account", new_user_registration_path, class: "btn btn-lg btn-primary" %><br />
+    <h2></h2>
+    <% if current_user %>
+      <%= link_to "View Available Lanes", new_user_session_path, class: "btn btn-lg btn-primary" %>
       <br />
-      <%= link_to "View Lanes", new_user_session_path, class: "btn btn-lg btn-primary" %>
+      <br />
+    <% else %>
+      <%= link_to "Create your account", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "View Available Lanes", new_user_session_path, class: "btn btn-lg btn-primary" %>
+      <br />
+      <br />
+    <% end %>
   </div>
 </div>
-
 <div class="cl-logo ri"><%= link_to image_tag("cloud-logistics-logo.png", alt: "Cloud Logistics Logo"), 'http://www.gocloudlogistics.com/' %></div>
