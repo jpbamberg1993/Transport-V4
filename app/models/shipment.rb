@@ -1,7 +1,9 @@
 class Shipment < ActiveRecord::Base
   has_many :users, through: :user_shipments
-  has_many :user_shipments, dependent: :destroy
-  has_many :offers, dependent: :destroy
+  has_many :user_shipments
+  has_many :offers
+  # => Destroy associated user_shipments and offers upon being destroyed
+  before_destroy :clean_database
 
   accepts_nested_attributes_for :user_shipments
 
@@ -92,4 +94,12 @@ class Shipment < ActiveRecord::Base
     price_in_dollars = cost.to_f
     format("%.2f", price_in_dollars)
   end
+
+  protected
+
+  def clean_database
+    self.user_shipments.destroy
+    self.offers.destroy
+  end
+
 end
