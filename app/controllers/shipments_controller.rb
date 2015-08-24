@@ -24,6 +24,7 @@ class ShipmentsController < ApplicationController
   def index
     @shipments = filtered_shipments
     current_user
+    @shipments = Shipment.paginate(page: params[:page])
   end
 
   # GET /shipments/1
