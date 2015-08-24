@@ -3,6 +3,9 @@ class ShipmentsController < ApplicationController
   before_action :set_shipment, only: [:show, :edit, :update, :destroy, :add_carrier]
   rescue_from ActionController::ParameterMissing, with: :redirect_to_shipment
 
+  require 'will_paginate/array'
+
+
   def add_carrier
     @carrier = User.find params[:carrier_id]
     @shipment.user_shipments.create(
@@ -22,9 +25,8 @@ class ShipmentsController < ApplicationController
   # GET /shipments
   # GET /shipments.json
   def index
-    @shipments = filtered_shipments
+    @shipments = filtered_shipments.paginate(page: params[:page], per_page: 10)
     current_user
-    @shipments = Shipment.paginate(page: params[:page], per_page: 10)
   end
 
     # GET /shipments/1
