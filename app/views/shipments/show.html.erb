@@ -71,7 +71,11 @@
 <% end %>
 
 <% if shipper? %>
-  <%= link_to 'Select Carriers', choose_carriers_path(@shipment) %> |
+  <% if @not_added_carrier_count > 0 %>
+    <%= link_to 'Select Carriers', choose_carriers_path(@shipment) %> |
+  <% else %>
+    <%= "All Carriers Have Been Added" %> |
+  <% end %>
   <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
 <% end %>
 

@@ -34,6 +34,7 @@ class ShipmentsController < ApplicationController
     @offers = @shipment.offers # Offer.list_for_this_shipment(params[:id])
     # @shipment.offers
     @carriers = @shipment.carriers
+    @not_added_carrier_count = @shipment.carriers_not_added.count
   end
 
   # GET /shipments/new
