@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   has_many :shipments, through: :user_shipments
   has_many :user_shipments
-  has_many :offers, dependent: :destroy
+  has_many :offers
+  # => Deletes user's user_shipments and
+  # => if shipper, shipments and if carrier, offers
+  before_destroy :clean_database
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -67,6 +70,17 @@ class User < ActiveRecord::Base
         end
       end
     end
+  end
+
+  protected
+
+  def clean_database
+    if self.shipper?
+      self.shipments.destroy
+    else
+      self.offers.destroy
+    end
+    self.user_shipments.destroy
   end
 
 end
