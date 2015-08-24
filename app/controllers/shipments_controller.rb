@@ -71,12 +71,11 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1
   # PATCH/PUT /shipments/1.json
   def update
-
     # => Accepts params for creating
     # => new user_shipments.
     # => Throws error if you try to update shipment
     # => or send a blank update.
-    carrier_ids = params[:shipment][:id]
+    carrier_ids = params[:shipment][:user_shipments_attributes]["0"][:user_id]
 
     # IF update called from choose_carriers page,
     # then make user_shipments

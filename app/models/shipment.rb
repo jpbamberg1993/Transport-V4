@@ -102,7 +102,7 @@ class Shipment < ActiveRecord::Base
       # => Needs something to display errors in
       # => user_shipment creation in a helpful way for users
     #end
-    #render :json => result
+    render :json => result
   end
 
   def formatted_price
