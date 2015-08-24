@@ -24,10 +24,10 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to @offer.shipment, notice: 'Offer was successfully created.' }
         format.json { render :show, status: :created, location: @offer }
       else
-        format.html { render :new }
+        format.html { redirect_to @shipment }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
@@ -38,10 +38,10 @@ class OffersController < ApplicationController
   def update
     respond_to do |format|
       if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
+        format.html { redirect_to shipments_path, notice: 'Offer was successfully updated.' }
         format.json { render :show, status: :ok, location: @offer }
       else
-        format.html { render :edit }
+        format.html { redirect_to shipments_path }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
