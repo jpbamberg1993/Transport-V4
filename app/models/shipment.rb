@@ -95,7 +95,7 @@ class Shipment < ActiveRecord::Base
       if new_user_shipment.save
         result << new_user_shipment
       else
-        result << "#{new_user_shipment.user.compcompany_name} was not saved"
+        result << "#{new_user_shipment.user.company_name} was not saved"
       end
     end
     return result
