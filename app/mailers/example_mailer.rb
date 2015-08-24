@@ -2,7 +2,7 @@
 class ExampleMailer < ActionMailer::Base
 	default from: "johnpaulprince22@gmail.com"
 
-# might pass users
+	# might pass users
 	def sample_email(user)
 		@user = user
 		mail(to: @user.email, subject: 'FUCKING SHITTT!!!')

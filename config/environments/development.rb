@@ -41,4 +41,5 @@ Rails.application.configure do
 
   # This is supposed to change the location of action mailer but it doesn't!!! IDK!!!
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end
