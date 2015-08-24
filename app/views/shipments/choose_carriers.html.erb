@@ -28,7 +28,7 @@
         <code><ul><span class="code-comment"></span>
           <%= f.fields_for :user_shipments do |user_shipment_form| %>
             <% @carriers.each do |carrier| %>
-              <li>
+              <li class="choose">
                 <%= carrier.company_name %>
                 <% user_id = carrier.id %>
                 <%= user_shipment_form.check_box("user_id", {:multiple => true}, user_id, nil) %>

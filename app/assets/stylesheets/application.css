@@ -579,13 +579,14 @@ input[type=radio]#button-5:checked~.arrows#arrow-4 { left: -73px }
   width:760px;
   margin-bottom:20px;
   overflow:hidden;
-  border-top:1px solid #ccc;
 }
-li{
+
+.choose {
   line-height:1.5em;
   border-bottom:1px solid #ccc;
   float:left;
   display:inline;
+  color: black;
 }
 
 #double li  { width:50%;} <span class="code-comment">/* 2 col */</span>
