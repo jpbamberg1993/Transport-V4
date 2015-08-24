@@ -74,16 +74,14 @@ class ShipmentsController < ApplicationController
   def update
     # => Accepts params for creating
     # => new user_shipments.
-    # => Throws error if you try to update shipment
-    # => or send a blank update.
     if params.include?("shipment"["id"])
       carrier_ids = params[:shipment][:id]
     end
 
     # IF update called from choose_carriers page,
-    # then make user_shipments
+    # then make user_shipments (choose_carriers :id params are an array)
     # IF update called from edit page,
-    # then update shipment
+    # then update shipment (update shipment :id params are not an array)
     if carrier_ids.kind_of?(Array)
       result = @shipment.create_user_shipment_collection(carrier_ids)
 
