@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require data-confirm-modal
 
 $('.enter_link').click(function() {
         $(this).parent().fadeOut(500);
