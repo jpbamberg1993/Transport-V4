@@ -74,7 +74,7 @@ class ShipmentsController < ApplicationController
   def update
     # => Accepts params for creating
     # => new user_shipments.
-    if params.include?("shipment"["id"])
+    if params[:shipment][:id]
       carrier_ids = params[:shipment][:id]
     end
 
