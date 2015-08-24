@@ -12,7 +12,6 @@ class Shipment < ActiveRecord::Base
   validates :minimum_commitment, presence: :true
   validates :maximum_commitment, presence: :true
   validates :cost, presence: :true
-  # validates :price_in_cents, numericality: {only_integer: true, greater_than: 0}
 
   def shippers
     user_shipments.where(role: 'shipper').map(&:user)
