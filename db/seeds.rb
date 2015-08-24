@@ -43,14 +43,39 @@ UserShipment.create(user_id: 3, shipment_id: 3, role: 'shipper')
 
 # => Create UserShipments for Carriers
 
-# => For carrier0@example.com
-UserShipment.create(user_id: 6, shipment_id: 1, role: 'carrier')
 UserShipment.create(user_id: 6, shipment_id: 2, role: 'carrier')
 UserShipment.create(user_id: 6, shipment_id: 3, role: 'carrier')
 
-# => For carrier1@example.com
-UserShipment.create(user_id: 7, shipment_id: 1, role: 'carrier')
 UserShipment.create(user_id: 7, shipment_id: 2, role: 'carrier')
 
-# => For carrier2@example.com
-UserShipment.create(user_id: 8, shipment_id: 1, role: 'carrier')
+UserShipment.create(user_id: 6, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 7, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 8, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 9, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 10, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 11, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 12, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 13, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 14, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 15, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 16, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 17, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 18, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 19, shipment_id: 1, role: "carrier")
+UserShipment.create(user_id: 20, shipment_id: 1, role: "carrier")
+
+Offer.create(user_id: 6, shipment_id: 1,  amount: 1)
+Offer.create(user_id: 7, shipment_id: 1,  amount: 3)
+Offer.create(user_id: 8, shipment_id: 1,  amount: 5)
+Offer.create(user_id: 9, shipment_id: 1,  amount: 7)
+Offer.create(user_id: 10, shipment_id: 1, amount: 9)
+Offer.create(user_id: 11, shipment_id: 1, amount: 11)
+Offer.create(user_id: 12, shipment_id: 1, amount: 13)
+Offer.create(user_id: 13, shipment_id: 1, amount: 15)
+Offer.create(user_id: 14, shipment_id: 1, amount: 14)
+Offer.create(user_id: 15, shipment_id: 1, amount: 12)
+Offer.create(user_id: 16, shipment_id: 1, amount: 10)
+Offer.create(user_id: 17, shipment_id: 1, amount: 8)
+Offer.create(user_id: 18, shipment_id: 1, amount: 6)
+Offer.create(user_id: 19, shipment_id: 1, amount: 4)
+Offer.create(user_id: 20, shipment_id: 1, amount: 2)
