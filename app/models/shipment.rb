@@ -87,22 +87,21 @@ class Shipment < ActiveRecord::Base
   def create_user_shipment_collection(carrier_ids)
     #if carrier_ids
 
-      result = []
+    result = []
 
-      carrier_ids.each do |id|
-        new_user_shipment = self.user_shipments.new(user_id: id, role: "carrier")
+    carrier_ids.each do |id|
+      new_user_shipment = self.user_shipments.new(user_id: id, role: "carrier")
 
-        if new_user_shipment.save
-          result << new_user_shipment
-        else
-          result << "#{new_user_shipment.user.compcompany_name} was not saved"
-        end
+      if new_user_shipment.save
+        result << new_user_shipment
+      else
+        result << "#{new_user_shipment.user.compcompany_name} was not saved"
       end
-      return result
-      # => Needs something to display errors in
-      # => user_shipment creation in a helpful way for users
+    end
+    return result
+    # => Needs something to display errors in
+    # => user_shipment creation in a helpful way for users
     #end
-    render :json => result
   end
 
   def formatted_price
