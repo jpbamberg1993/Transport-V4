@@ -1,6 +1,6 @@
 <%= content_tag_for(:div, @offers) do |offer| %>
   <tr>
     <td><%= offer.company %></td>
-    <td><%= offer.amount %></td>
+    <td><%= "$#{offer.amount}" %></td>
   </tr>
 <% end %>
