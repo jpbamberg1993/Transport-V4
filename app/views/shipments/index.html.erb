@@ -15,7 +15,7 @@
 
 <table class="table table-striped">
   <thead class="table-header">
-    <h1>List of Shipments</h1><br />
+    <h1>List of Available Lanes</h1><br />
     <tr>
       <th>Origin</th>
       <th>Destination</th>
@@ -67,9 +67,9 @@
 <br>
 
 <% if current_user.shipper? %>
-  <div class="create-shipment"><%= link_to 'Create a new shipment', new_shipment_path %></div>
+  <div class="create-shipment"><%= link_to 'Add a new lane', new_shipment_path %></div>
 <% end %>
 
 <div class="export-data">
-  <%= link_to 'Export data', shipments_export_path(format: "csv") %>
+  <%= link_to 'Export lane data', shipments_export_path(format: "csv") %>
 </div>
