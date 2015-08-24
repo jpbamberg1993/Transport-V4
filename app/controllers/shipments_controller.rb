@@ -1,6 +1,7 @@
 class ShipmentsController < ApplicationController
   before_filter :require_permission, only: [:edit, :update, :destroy]
   before_action :set_shipment, only: [:show, :edit, :update, :destroy, :add_carrier]
+  rescue_from ActionController::ParameterMissing, with: :redirect_to_shipment
 
   def add_carrier
     @carrier = User.find params[:carrier_id]
@@ -13,8 +14,9 @@ class ShipmentsController < ApplicationController
   end
 
   def choose_carriers
-    @carriers = User.list_carriers
     @shipment = Shipment.find params[:id]
+    @carriers = @shipment.carriers_not_added
+    #render :json => @carriers
   end
 
   # GET /shipments
@@ -27,11 +29,11 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1
   # GET /shipments/1.json
   def show
-  #  @shipment = Shipment.where params[:id]
+    @shipment = Shipment.find params[:id]
     @offer = Offer.new
     @offers = @shipment.offers # Offer.list_for_this_shipment(params[:id])
     # @shipment.offers
-    @carriers = User.list_carriers
+    @carriers = @shipment.carriers
   end
 
   # GET /shipments/new
@@ -70,40 +72,34 @@ class ShipmentsController < ApplicationController
   # PATCH/PUT /shipments/1
   # PATCH/PUT /shipments/1.json
   def update
-
-    carrier_ids = params[:shipment][:user_shipments_attributes]["0"][:user_id]
-    shipment_id = @shipment.id
-
-    if carrier_ids
-
-      carriers_added = []
-      add_errors = []
-
-      carrier_ids.each do |id|
-        new_user_shipment = @shipment.user_shipments.new(user_id: id, role: "carrier")
-
-        if new_user_shipment.save
-          carriers_added << new_user_shipment
-        else
-          carriers_not_added << new_user_shipment.user.company_name
-        end
-      end
-
-      # => Needs something to display errors in
-      # => user_shipment creation in a helpful way for users
-      #redirect_to @shipment
-      #render :json => carriers_added
+    # => Accepts params for creating
+    # => new user_shipments.
+    # => Throws error if you try to update shipment
+    # => or send a blank update.
+    if params.include?("shipment"["id"])
+      carrier_ids = params[:shipment][:id]
     end
 
+    # IF update called from choose_carriers page,
+    # then make user_shipments
+    # IF update called from edit page,
+    # then update shipment
+    if carrier_ids.kind_of?(Array)
+      result = @shipment.create_user_shipment_collection(carrier_ids)
 
-
-    respond_to do |format|
-      if @shipment.update(shipment_params)
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shipment }
-      else
-        format.html { render :edit }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        format.html { redirect_to @shipment }
+        format.json { render :json => result, status: :ok, location: @shipment }
+      end
+    else
+      respond_to do |format|
+        if @shipment.update(shipment_params)
+          format.html { redirect_to @shipment, notice: 'Shipment was successfully updated.' }
+          format.json { render :show, status: :ok, location: @shipment }
+        else
+          format.html { render :edit }
+          format.json { render json: @shipment.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -125,6 +121,12 @@ class ShipmentsController < ApplicationController
       format.html { redirect_to root_url }
       format.csv { send_data @data.to_csv }
     end
+  end
+
+  protected
+
+  def redirect_to_shipment
+    redirect_to @shipment
   end
 
   private

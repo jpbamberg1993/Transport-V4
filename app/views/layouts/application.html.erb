@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- for FF, Chrome, Opera -->
-  <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALN8WqGSUjT/lFQ1/5xbOf+ZWjr/AAAAAAAAAAAAAAAAAAAAAAAAAADHl3X/qGhA5AAAAAAAAAAAAAAAAJhYOf+ZWTr/mls8/wAAAACTUTP/lVU2/5lZOf/Lo4tmAAAAAAAAAAAAAAAAv41r/8KRbv/ElHL/AAAAAKZmP9mgYUD/oWJA/+ra0CkAAAAAmls5/51fPf+gYUD/pWdE/wAAAAAAAAAAAAAAAMOZfpm6hGT/vopp/61xS/+naEj/pmlJ/6dqSv8AAAAAAAAAAAAAAACnaEb/qWxK/6twTv+oaUT/AAAAAAAAAADYuqlVsXlZ/7R8XP+3gWD/qm9P/6xxUf+uc1P/7N7WIQAAAAAAAAAAq2xJ/7B3Vf+yelf/tX5b/wAAAAAAAAAAp2hG3qhrS/+qb0//rnRU/7N6Wf+0fFv/tH5d/6lpQ/+kYTnWAAAAAAAAAAC3gV7/uYNf/72JZf+lYzv/AAAAAJpbPP+gYED/omRC/6ZnRf+4g2PPuYRj/7mDY/+6hGT/u4dl/wAAAAAAAAAApmY+z8CMaP/Cj2n/xZZyhqdmPv+QTzL/lFQ2/5dXOP/t39cfAAAAAL+Mav/Ajmv/v41r/8SUcP8AAAAAAAAAAAAAAADGlnH/w5Js/8KRa//Ekmz/pmU+/6dmP/+sbkXGAAAAAAAAAADFlnT/w5Nx/8WVc/+/i2j/AAAAAAAAAAAAAAAAAAAAAAAAAADElHDCw5Fszdu9pkoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAAwfMAAIjxAAAYcAAAHDgAABwwAAAGEAAABgEAAIcBAACHzwAA//8AAP//AAD//wAA//8AAA==" rel="icon" type="image/x-icon" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="icon" type="image/png" href="/assets/favicons/favicon-16x16.png" sizes="16x16">
-  <link rel="icon" type="image/png" href="/assets/favicons/favicon-32x32.png" sizes="32x32">
-<!-- for IE -->
-  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" >
-  <link rel="shortcut icon" type="image/x-icon"     href="/assets/favicons/favicon.ico"/>
-  <title><%= full_title(yield(:title)) %></title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-      <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= render 'layouts/header' %>
-  <div class="container">
-
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-  </div>
-
-
-</body>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- for FF, Chrome, Opera -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" href="/assets/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/assets/favicon-32x32.png" sizes="32x32">
+  <!-- for IE -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" >
+    <link rel="shortcut icon" type="image/x-icon"     href="/assets/favicon.ico"/>
+    <title><%= full_title(yield(:title)) %></title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
 </html>
+
+
+<!--<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALN8WqGSUjT/lFQ1/5xbOf+ZWjr/AAAAAAAAAAAAAAAAAAAAAAAAAADHl3X/qGhA5AAAAAAAAAAAAAAAAJhYOf+ZWTr/mls8/wAAAACTUTP/lVU2/5lZOf/Lo4tmAAAAAAAAAAAAAAAAv41r/8KRbv/ElHL/AAAAAKZmP9mgYUD/oWJA/+ra0CkAAAAAmls5/51fPf+gYUD/pWdE/wAAAAAAAAAAAAAAAMOZfpm6hGT/vopp/61xS/+naEj/pmlJ/6dqSv8AAAAAAAAAAAAAAACnaEb/qWxK/6twTv+oaUT/AAAAAAAAAADYuqlVsXlZ/7R8XP+3gWD/qm9P/6xxUf+uc1P/7N7WIQAAAAAAAAAAq2xJ/7B3Vf+yelf/tX5b/wAAAAAAAAAAp2hG3qhrS/+qb0//rnRU/7N6Wf+0fFv/tH5d/6lpQ/+kYTnWAAAAAAAAAAC3gV7/uYNf/72JZf+lYzv/AAAAAJpbPP+gYED/omRC/6ZnRf+4g2PPuYRj/7mDY/+6hGT/u4dl/wAAAAAAAAAApmY+z8CMaP/Cj2n/xZZyhqdmPv+QTzL/lFQ2/5dXOP/t39cfAAAAAL+Mav/Ajmv/v41r/8SUcP8AAAAAAAAAAAAAAADGlnH/w5Js/8KRa//Ekmz/pmU+/6dmP/+sbkXGAAAAAAAAAADFlnT/w5Nx/8WVc/+/i2j/AAAAAAAAAAAAAAAAAAAAAAAAAADElHDCw5Fszdu9pkoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAAwfMAAIjxAAAYcAAAHDgAABwwAAAGEAAABgEAAIcBAACHzwAA//8AAP//AAD//wAA//8AAA==" rel="icon" type="image/x-icon" />-->

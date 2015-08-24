@@ -15,7 +15,7 @@
 
 <table class="table table-striped">
   <thead class="table-header">
-    <h1>List of Shipments</h1><br />
+    <h1>List of Available Lanes</h1><br />
     <tr>
       <th>Origin</th>
       <th>Destination</th>
@@ -48,7 +48,7 @@
 <!-- START: Different link text for carriers,
         depending on if they've made an offer to that shipment -->
         <% if carrier? %>
-          <% if shipment.offers.include? current_user %>
+          <% if shipment.has_offer?(current_user) %>
             <td>Yes</td>
           <% else %>
             <td>No</td>
@@ -67,11 +67,15 @@
 <br>
 
 <% if current_user.shipper? %>
-  <div class="create-shipment"><%= link_to 'Create a new shipment', new_shipment_path %></div>
+  <div class="create-shipment"><%= link_to 'Add a new lane', new_shipment_path %></div>
 <% end %>
 
 <div class="export-data">
+<<<<<<< HEAD
   <% if current_user.shipper? %>
     <%= link_to 'Export Data', shipments_export_path(format: "csv") %>
   <% end %>
+=======
+  <%= link_to 'Export lane data', shipments_export_path(format: "csv") %>
+>>>>>>> 9bec8b6bb39f4f4442a347b88e05d17e1be45f51
 </div>

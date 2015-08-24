@@ -30,7 +30,38 @@ class Shipment < ActiveRecord::Base
     user_shipments.where(role: 'carrier').map(&:user)
   end
 
+<<<<<<< HEAD
   # Defines columns from database to download to csv
+=======
+  def carriers_not_added
+    all = User.where(role: 'carrier')
+    added = user_shipments.where(role: 'carrier', ).map(&:user)
+    return ( all - added )
+  end
+
+  def has_offer?(user)
+    shipment = self
+    offer = Offer.where( user_id: user.id, shipment_id: shipment.id )
+
+    if offer.empty?
+      return false
+    else
+      return true
+    end
+  end
+
+  def user_offer(user)
+    shipment = self
+    offer = Offer.where( user_id: user.id, shipment_id: shipment.id ).take
+    offer.amount
+  end
+
+  def set_offer(user)
+    shipment = self
+    offer = Offer.where( user_id: user.id, shipment_id: shipment.id ).take
+  end
+
+>>>>>>> 9bec8b6bb39f4f4442a347b88e05d17e1be45f51
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv.add_row(["id", "origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost", "created_at", "updated_at"])
@@ -38,8 +69,49 @@ class Shipment < ActiveRecord::Base
         values = foo.attributes.values
         csv.add_row values
       end
+<<<<<<< HEAD
     end 
   end 
+=======
+    end
+  end
+
+  # def self.to_csv_threw_bar(options = {})
+  #   CSV.generate(options) do |csv|
+  #     csv.add_row origin destination mode_of_transportation equipment_type minimum_commitment maximum_commitment cost created_at updated_at
+
+  #     all.each do |shipment|
+  #       values = shipment.attributes.values
+  #       # in case field missing will gets ommited
+  #       if shipment.bar
+  #         values += shipment.attributes.values
+  #       end
+
+  #       csv.add_row values
+  #     end
+  #   end
+  # end
+>>>>>>> 9bec8b6bb39f4f4442a347b88e05d17e1be45f51
+
+  def create_user_shipment_collection(carrier_ids)
+    #if carrier_ids
+
+    result = []
+
+    carrier_ids.each do |id|
+      new_user_shipment = self.user_shipments.new(user_id: id, role: "carrier")
+
+      if new_user_shipment.save
+        result << new_user_shipment
+      else
+        result << "#{new_user_shipment.user.compcompany_name} was not saved"
+      end
+    end
+    return result
+    # => Needs something to display errors in
+    # => user_shipment creation in a helpful way for users
+    #end
+  end
 
   def formatted_price
     price_in_dollars = cost.to_f

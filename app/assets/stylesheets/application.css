@@ -337,11 +337,11 @@ a:hover {
 
 @font-face {
     font-family: 'WebSymbolsRegular';
-    src: url('http://html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.eot');
-    src: url('http://html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), url('http://html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.woff') format('woff'), url('http://html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.ttf') format('truetype'), url('http://html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont#WebSymbolsRegular') format('svg');
+    src: url('//html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.eot');
+    src: url('//html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), url('//html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.woff') format('woff'), url('//html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont.ttf') format('truetype'), url('//html5css3demos.bplaced.net/css3-slider-v3/websymbols-regular-webfont#WebSymbolsRegular') format('svg');
 }
 
-@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+@import url('//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700');
 
 * {
     margin: 0;
@@ -363,7 +363,7 @@ h1 { color: white }
     display: block;
     height: 320px;
     min-width: 260px;
-    max-width: 640px;
+    max-width: 420px; /*640px;*/
     margin: auto;
     border: 12px rgba(255,255,240,1) solid;
     -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.8);
@@ -403,6 +403,7 @@ h1 { color: white }
 
 #slideshow-inner>ul>li>img {
     margin: auto;
+    width: 100%;
     height: 100%;
 }
 
@@ -562,3 +563,33 @@ input[type=radio]#button-5:checked~.arrows#arrow-4 { left: -73px }
     transition: opacity .2s;
     color: rgb(20,20,20);
 }
+
+/* Splashscreen currently in progress */
+
+#splashscreen {
+    position:absolute;
+    top:75px;
+    left: 25%;
+    z-index: 1000;
+}
+
+/* For inviting carriers after shipment is created */
+
+<code>ul{
+  width:760px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+
+.choose {
+  line-height:1.5em;
+  border-bottom:1px solid #ccc;
+  float:left;
+  display:inline;
+  color: black;
+}
+
+#double li  { width:50%;} <span class="code-comment">/* 2 col */</span>
+#triple li  { width:33.333%; } <span class="code-comment">/* 3 col */</span>
+#quad li    { width:25%; } <span class="code-comment">/* 4 col */</span>
+#six li     { width:16.666%; } <span class="code-comment">/* 6 col */</span></code>
