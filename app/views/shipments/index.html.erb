@@ -57,7 +57,7 @@
 <!--                      END                      -->
         <% if current_user.shipper? %>
           <td><%= link_to 'Edit', edit_shipment_path(shipment)%></td>
-          <td><%= link_to 'Delete', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td data-toggle="modal" data-target='#basicModal'><%= link_to 'Delete', shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -74,3 +74,11 @@
 <div class="export-data">
   <%= link_to 'Export lane data', shipments_export_path(format: "csv") %>
 </div>
+
+<!--<a href="#" class="btn btn-lg btn-success"
+   data-toggle="modal"
+   data-target="#basicModal">Click to open Modal</a>-->
+
+$('#basicModal').on('shown.bs.modal', function (e) {
+   alert('Modal is successfully shown!');
+});

@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
+$('#basicModal').on('shown.bs.modal', function (e) {
+    alert('Modal is successfully shown!');
+});
+
 $('.enter_link').click(function() {
         $(this).parent().fadeOut(500);
  });
