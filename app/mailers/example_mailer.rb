@@ -1,6 +1,6 @@
 # Not sure might be class ExampleMailer < ApplicationMailer::Base
 class ExampleMailer < ActionMailer::Base
-	default from: "jpbamberg1993@gmail.com"
+	default from: "johnpaulprince22@gmail.com"
 
 # might pass users
 	def sample_email(user)
