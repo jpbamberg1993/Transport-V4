@@ -32,7 +32,7 @@ class ShipmentsController < ApplicationController
   def show
     @shipment = Shipment.find params[:id]
     @offer = Offer.new
-    @offers = @shipment.offers # Offer.list_for_this_shipment(params[:id])
+    @offers = @shipment.offers.order(amount: :asc) # Offer.list_for_this_shipment(params[:id])
     # @shipment.offers
     @carriers = @shipment.carriers
     @not_added_carrier_count = @shipment.carriers_not_added.count
