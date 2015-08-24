@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the A
 # gem 'rspec', '~>3.0'								# TDD Gem
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+# gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 group :development, :test do
   gem 'byebug'										  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
