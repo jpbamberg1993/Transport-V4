@@ -42,15 +42,17 @@
   <% if @offers.count > 0 %>
     <h4>Submitted Offers</h4>
     <div class="placed_offers">
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Quote</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render "offers/accept_offer", collection: @offers %>
-      </tbody>
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Quote</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render "offers/accept_offer", collection: @offers %>
+        </tbody>
+      </table>
     </div>
 
   <% else %>
