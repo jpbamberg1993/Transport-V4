@@ -39,5 +39,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  # This is supposed to change the location of action mailer but it doesn't!!! IDK!!!
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end
