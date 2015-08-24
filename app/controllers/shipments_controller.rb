@@ -19,13 +19,15 @@ class ShipmentsController < ApplicationController
   def choose_carriers
     @shipment = Shipment.find params[:id]
     @carriers = @shipment.carriers_not_added
-    #render :json => @carriers
   end
 
   # GET /shipments
-  # GET /shipments.json
   def index
-    @shipments = filtered_shipments.paginate(page: params[:page], per_page: 10)
+    # Order shipments so last active (through offers) is at top
+    # Shipments are touched when offer is made on it
+    # Then paginate
+    @shipments = filtered_shipments.sort_by{|e| e[:updated_at]}
+    @shipments = @shipments.paginate(page: params[:page], per_page: 10)
     current_user
   end
 
