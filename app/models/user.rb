@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   has_many :shipments, through: :user_shipments
   has_many :user_shipments
-  has_many :offers, dependent: :destroy
+  has_many :offers
+  # => Deletes user's user_shipments and
+  # => if shipper, shipments and if carrier, offers
+  before_destroy :clean_database
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -43,16 +46,18 @@ class User < ActiveRecord::Base
   # => Methods to help testing seeds in console - Chris
   # => Remove before finishing
 
-  # => Enter this in the console for easier testing
+  # => For rails console checking for easier viewing
   # => ActiveRecord::Base.logger.level = 1
   def self.see_id_and_roles
     self.all.each do |u|
-      puts "================="
       puts "id: #{u.id}"
       puts "name: #{u.company_name}"
+      puts "role: #{u.role}"
+      puts "================="
     end
   end
 
+  # => For rails console checking
   # => To see shipments that each carrier can view
   def self.see_carrier_shipments
     self.where(role: 'carrier').each do |u|
@@ -67,6 +72,17 @@ class User < ActiveRecord::Base
         end
       end
     end
+  end
+
+  protected
+
+  def clean_database
+    if self.shipper?
+      self.shipments.destroy
+    else
+      self.offers.destroy
+    end
+    self.user_shipments.destroy
   end
 
 end
