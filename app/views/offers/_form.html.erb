@@ -16,10 +16,10 @@
         </div>
       <% end %>
 
-        <% if current_user.shipper? %>
-          <%= f.label :accepted %><br>
-          <%= f.check_box :accepted, class: 'form-control' %>
-        <% end %>
+        <%# if current_user.shipper? %>
+          <%#= f.label :accepted %><br>
+          <%#= f.check_box :accepted, class: 'form-control' %>
+        <%# end %>
 
         <% if current_user.carrier? %>
           <%= f.label :amount %><br>
