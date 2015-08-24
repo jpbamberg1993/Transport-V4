@@ -1,6 +1,7 @@
 class ShipmentsController < ApplicationController
   before_filter :require_permission, only: [:edit, :update, :destroy]
   before_action :set_shipment, only: [:show, :edit, :update, :destroy, :add_carrier]
+  rescue_from ActionController::ParameterMissing, with: :redirect_to_shipment
 
   def add_carrier
     @carrier = User.find params[:carrier_id]
@@ -75,13 +76,15 @@ class ShipmentsController < ApplicationController
     # => new user_shipments.
     # => Throws error if you try to update shipment
     # => or send a blank update.
-    carrier_ids = params[:shipment][:user_shipments_attributes]["0"][:user_id]
+    if params.include?("shipment"["id"])
+      carrier_ids = params[:shipment][:id]
+    end
 
     # IF update called from choose_carriers page,
     # then make user_shipments
     # IF update called from edit page,
     # then update shipment
-    if carrier_ids
+    if carrier_ids.kind_of?(Array)
       result = @shipment.create_user_shipment_collection(carrier_ids)
 
       respond_to do |format|
@@ -118,6 +121,12 @@ class ShipmentsController < ApplicationController
       format.html { redirect_to root_url }
       format.csv { send_data @data.to_csv }
     end
+  end
+
+  protected
+
+  def redirect_to_shipment
+    redirect_to @shipment
   end
 
   private
