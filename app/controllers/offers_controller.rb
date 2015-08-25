@@ -58,14 +58,14 @@ class OffersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_offer
-      @offer = Offer.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_offer
+    @offer = Offer.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    # adding accept parameter
-    def offer_params
-      params.require(:offer).permit(:amount, :user_id, :shipment_id, :accepted)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  # adding accept parameter
+  def offer_params
+    params.require(:offer).permit(:amount, :user_id, :shipment_id, :accepted)
+  end
 end

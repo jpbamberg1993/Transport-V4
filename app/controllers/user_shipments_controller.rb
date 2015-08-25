@@ -28,16 +28,15 @@ class UserShipmentsController < ApplicationController
 
     respond_to do |format|
       if @user_shipment.save
-        UserNotifier.send_signup_email(@user).deliver
         format.html { redirect_to @user_shipment, notice: 'User shipment was successfully created.' }
         format.json { render :show, status: :created, location: @user_shipment }
         # Should send email
-        @user_shipment.send_signup_email(current_user)
+        @user_shipment.send_signup_email(@user_shipment)
       else
 
         format.html { render :new, notice: 'User shipment was not created' }
         format.json { render json: @user_shipment.errors, status: :unprocessable_entity }
-        @user_shipment.send_signup_email(current_user)
+        @user_shipment.send_signup_email(@carrier)
       end
     end
   end
