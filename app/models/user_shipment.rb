@@ -4,17 +4,16 @@ class UserShipment < ActiveRecord::Base
   after_create :send_carrier_email
 
 	# send a signup email to the user, pass in the user object that   contains the user's email address
-	def send_signup_email(user)
-	  @user = user
-	  mail( :to => @user.email,
-	   :subject => 'Thanks for signing up for our amazing app' )
-	end
+	# def send_signup_email(user)
+	#   @user = user
+	#   mail( :to => @user.email,
+	#    :subject => 'Thanks for signing up for our amazing app' )
+	# end
 	
 	private 
 	def send_carrier_email
 		if self.role == "carrier"
-			mail( :to => self.user.email,
-			 :subject => "Hello there Bobo")
+			UserNotifier.send_signup_email(self.user).deliver_now
 		end
 	end
 end
