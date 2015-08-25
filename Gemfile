@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.2.2"
 
 gem 'devise' 												# For user authorization
-gem 'rails_12factor' 								# For Heroku optimization
+gem 'rails_12factor', group: :production # For heroku  to access jquery_ujs
 gem 'rails', '4.2.3'			      		# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'pg'														# Use postgresql as the database for Active Record
