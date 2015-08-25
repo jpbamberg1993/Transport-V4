@@ -25,7 +25,11 @@
 }
 
 body {
-  background-color: #F8F8F8;
+    background-image: none;
+    background-repeat: repeat;
+    height: 500px;
+    padding: 1px;
+    background-color: #F8F8F8;
 }
 
 .welcome-text {
@@ -361,13 +365,6 @@ a:hover {
 * {
     margin: 0;
     padding: 0;
-}
-
-body {
-    background-image: none;
-    background-repeat: repeat;
-    height: 500px;
-    padding: 1px;
 }
 
 /*
