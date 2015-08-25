@@ -30,7 +30,6 @@ class UserShipmentsController < ApplicationController
       if @user_shipment.save
         format.html { redirect_to @user_shipment, notice: 'User shipment was successfully created.' }
         format.json { render :show, status: :created, location: @user_shipment }
-        # Should send email
       else
 
         format.html { render :new, notice: 'User shipment was not created' }
