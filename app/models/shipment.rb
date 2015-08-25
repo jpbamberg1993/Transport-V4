@@ -60,11 +60,11 @@ class Shipment < ActiveRecord::Base
   end
 
   # Defines columns from database to download to csv
-  def self.to_csv(options = {})
+  def self.to_csv(attributes = "origin" "destination" "mode_of_transportation" "equipment_type" "minimum_commitment" "maximum_commitment" "cost", options = {})
     CSV.generate(options) do |csv|
-      csv.add_row(["id", "origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost", "created_at", "updated_at"])
+      csv.add_row(["origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost"])
       all.each do |foo|
-        values = foo.attributes.values
+        values = foo.attributes.slice("origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost").values
         csv.add_row values
       end
     end
