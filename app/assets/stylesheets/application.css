@@ -28,6 +28,14 @@ body {
   background-color: #F8F8F8;
 }
 
+.welcome-text {
+  position: absolute;
+  z-index: 1000;
+  top: 300px;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
 .jumbotron {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -319,14 +327,6 @@ input[type="reset"], input[type="submit"] {
 }
 
 */
-
-.welcome-text {
-  position: absolute;
-  z-index: 1000;
-  top: 300px;
-  left: 50%;
-  transform: translate(-50%, -50%)
-}
 
 .log-in {
   margin-left: 25px;
