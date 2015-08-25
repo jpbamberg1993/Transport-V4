@@ -31,6 +31,7 @@ class UserShipmentsController < ApplicationController
         UserNotifier.send_signup_email(@user).deliver
         format.html { redirect_to @user_shipment, notice: 'User shipment was successfully created.' }
         format.json { render :show, status: :created, location: @user_shipment }
+        # Should send email
         @user_shipment.send_signup_email(current_user)
       else
 
