@@ -30,9 +30,6 @@ class Shipment < ActiveRecord::Base
     user_shipments.where(role: 'carrier').map(&:user)
   end
 
-<<<<<<< HEAD
-  # Defines columns from database to download to csv
-=======
   def carriers_not_added
     all = User.where(role: 'carrier')
     added = user_shipments.where(role: 'carrier', ).map(&:user)
@@ -61,7 +58,6 @@ class Shipment < ActiveRecord::Base
     offer = Offer.where( user_id: user.id, shipment_id: shipment.id ).take
   end
 
->>>>>>> 9bec8b6bb39f4f4442a347b88e05d17e1be45f51
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv.add_row(["id", "origin", "destination", "mode_of_transportation", "equipment_type", "minimum_commitment", "maximum_commitment", "cost", "created_at", "updated_at"])
@@ -69,30 +65,9 @@ class Shipment < ActiveRecord::Base
         values = foo.attributes.values
         csv.add_row values
       end
-<<<<<<< HEAD
-    end 
-  end 
-=======
     end
   end
-
-  # def self.to_csv_threw_bar(options = {})
-  #   CSV.generate(options) do |csv|
-  #     csv.add_row origin destination mode_of_transportation equipment_type minimum_commitment maximum_commitment cost created_at updated_at
-
-  #     all.each do |shipment|
-  #       values = shipment.attributes.values
-  #       # in case field missing will gets ommited
-  #       if shipment.bar
-  #         values += shipment.attributes.values
-  #       end
-
-  #       csv.add_row values
-  #     end
-  #   end
-  # end
->>>>>>> 9bec8b6bb39f4f4442a347b88e05d17e1be45f51
-
+  
   def create_user_shipment_collection(carrier_ids)
     #if carrier_ids
 
