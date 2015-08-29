@@ -2,39 +2,32 @@
 
 <h1>Current Lane Information</h1>
 
-<p>
-  <strong>Origin:</strong>
-  <%= @shipment.origin %>
-</p>
-<p>
-  <strong>Destination:</strong>
-  <%= @shipment.destination %>
-</p>
-<p>
-  <strong>Mode of transportation:</strong>
-  <%= @shipment.mode_of_transportation %>
-</p>
-<p>
-  <strong>Equipment type:</strong>
-  <%= @shipment.equipment_type %>
-</p>
-<p>
-  <strong>Minimum commitment:</strong>
-  <%= @shipment.minimum_commitment %>
-</p>
-<p>
-  <strong>Maximum commitment:</strong>
-  <%= @shipment.maximum_commitment %>
-</p>
-<p>
-  <strong>Cost:</strong>
-  $<%= @shipment.formatted_price %>
-</p>
+<p> <strong>Origin:</strong>
+  <%= @shipment.origin %> </p>
+
+<p> <strong>Destination:</strong>
+  <%= @shipment.destination %> </p>
+
+<p> <strong>Mode of transportation:</strong>
+  <%= @shipment.mode_of_transportation %> </p>
+
+<p> <strong>Equipment type:</strong>
+  <%= @shipment.equipment _type %> </p>
+
+<p> <strong>Minimum commitment:</strong>
+  <%= @shipment.minimum_commitment %> </p>
+
+<p> <strong>Maximum commitment:</strong>
+  <%= @shipment.maximum_commitment %> </p>
+
+<p> <strong>Cost:</strong>
+  $<%= @shipment.formatted_price %> </p>
+
+
 <% if current_user.carrier? %>
 <p>
-  <strong>Shipper:</strong>
-  <%= @shipment.company_name %>
-</p>
+<strong>Shipper:</strong>
+<%= @shipment.company_name %></p>
 <% end %>
 
 <% if shipper? %>
@@ -63,7 +56,7 @@
 
 <% if carrier? %>
   <% if @shipment.has_offer?(current_user) %>
-    <%= @shipment.user_offer(current_user) %>
+    <p>$<%= @shipment.user_offer(current_user) %></p>
     <% @offer = @shipment.set_offer(current_user) %>
     <%= link_to "Change amount", edit_offer_path(@offer) %>
     <br>
