@@ -34,7 +34,7 @@
 
 
 <!-- If shipper, run block -->
-<%= if shipper? %>
+<% if shipper? %>
   <!-- If an offer was made on lane, show it -->
   <% if @offers.count > 0 %>
     <h4>Submitted Offers</h4>
@@ -58,7 +58,7 @@
 <% end %>
 
 <!-- If carrier, run block -->
-<%= if carrier? %>
+<% if carrier? %>
   <!-- If user made offer, show it -->
   <% if @shipment.has_offer?(current_user) %>
     <p>$<%= @shipment.user_offer(current_user) %></p>
