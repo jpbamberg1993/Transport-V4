@@ -26,7 +26,7 @@ class ShipmentsController < ApplicationController
     # Order shipments so last active (through offers) is at top
     # Shipments are touched when offer is made on it
     # Then paginate
-    @shipments = filtered_shipments.sort_by{|e| e[:updated_at]}
+    @shipments = filtered_shipments #.sort_by{|e| -e[:updated_at]}
     @shipments = @shipments.paginate(page: params[:page], per_page: 10)
     current_user
   end

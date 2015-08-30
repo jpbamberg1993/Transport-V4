@@ -79,13 +79,11 @@ Rails.application.configure do
   
   # Mailer (might try putting outside class)
   config.action_mailer.delivery_method = :smtp
-  # SMTP setting for gmail
+  # SMTP setting for sendgrid
   ActionMailer::Base.smtp_settings = {
-    :port                 => 587,
-    :address              => 'smtp.mailgun.org',
-    :domain               => ENV['sandboxfedbdf32897a4ea69d1f343bdbc71e20.mailgun.org'],
-    :user_name            => ENV['jpbamberg1993@gmail.com'],
-    :password             => ENV['logistic'],
-    :authentication       => "plain",
+    :port                 => 465,
+    :address              => 'smtp.sendgrid.net',
+    :user_name            => 'apikey',
+    :password             => ENV['sendgrid_key'],
   }
 end

@@ -15,11 +15,10 @@ gem 'jbuilder', '~> 2.0'						# Build JSON APIs with ease. Read more: https://gi
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 gem 'resque'												# Enables resque background jobs and place in multiple queues
 gem 'resque-scheduler'							# Enables resque schedular
-gem 'mailgun-ruby', '~>1.0.2'				# Sends emails
-# gem 'rspec', '~>3.0'								# TDD Gem
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 #gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'										  # Call 'byebug' anywhere in the code to stop execution and get a debugger console

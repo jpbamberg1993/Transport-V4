@@ -7,4 +7,5 @@ class ExampleMailer < ActionMailer::Base
 		@user = user
 		mail(to: @user.email, subject: 'FUCKING SHITTT!!!')
 	end
+
 end

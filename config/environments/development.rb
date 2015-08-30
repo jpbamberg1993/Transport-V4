@@ -40,6 +40,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # This is supposed to change the location of action mailer but it doesn't!!! IDK!!!
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # SMTP setting for sendgrid
+  ActionMailer::Base.smtp_settings = {
+    :port                 => 465,
+    :address              => 'smtp.sendgrid.net',
+    :user_name            => 'apikey',
+    :password             => ENV['sendgrid_key'],
+  }
 end

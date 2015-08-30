@@ -1,44 +1,41 @@
+<!-- Tab label -->
 <% provide(:title, 'Current Lane Information') %>
 
+<!-- Header -->
 <h1>Current Lane Information</h1>
 
-<p>
-  <strong>Origin:</strong>
-  <%= @shipment.origin %>
-</p>
-<p>
-  <strong>Destination:</strong>
-  <%= @shipment.destination %>
-</p>
-<p>
-  <strong>Mode of transportation:</strong>
-  <%= @shipment.mode_of_transportation %>
-</p>
-<p>
-  <strong>Equipment type:</strong>
-  <%= @shipment.equipment_type %>
-</p>
-<p>
-  <strong>Minimum commitment:</strong>
-  <%= @shipment.minimum_commitment %>
-</p>
-<p>
-  <strong>Maximum commitment:</strong>
-  <%= @shipment.maximum_commitment %>
-</p>
-<p>
-  <strong>Cost:</strong>
-  $<%= @shipment.formatted_price %>
-</p>
-<% if current_user.carrier? %>
-<p>
-  <strong>Shipper:</strong>
-  <%= @shipment.company_name %>
-</p>
+<!-- If carrier, show Shipping Company -->
+<% if carrier? %>
+<p><strong>Shipper:</strong>
+  <%= @shipment.company_name %></p>
 <% end %>
 
-<% if shipper? %>
+<!-- Lane details -->
+<p> <strong>Origin:</strong>
+  <%= @shipment.origin %> </p>
 
+<p> <strong>Destination:</strong>
+  <%= @shipment.destination %> </p>
+
+<p> <strong>Mode of transportation:</strong>
+  <%= @shipment.mode_of_transportation %> </p>
+
+<p> <strong>Equipment type:</strong>
+  <%= @shipment.equipment_type %> </p>
+
+<p> <strong>Minimum commitment:</strong>
+  <%= @shipment.minimum_commitment %> </p>
+
+<p> <strong>Maximum commitment:</strong>
+  <%= @shipment.maximum_commitment %> </p>
+
+<p> <strong>Cost:</strong>
+  $<%= @shipment.formatted_price %> </p>
+
+
+<!-- If shipper, run block -->
+<% if shipper? %>
+  <!-- If an offer was made on lane, show it -->
   <% if @offers.count > 0 %>
     <h4>Submitted Offers</h4>
     <div class="placed_offers">
@@ -54,30 +51,52 @@
         </tbody>
       </table>
     </div>
-
+  <!-- If not, show message -->
   <% else %>
     <h4>No quotes have been submitted at this time.</h4>
   <% end %>
 <% end %>
 
-
+<!-- If carrier, run block -->
 <% if carrier? %>
+  <!-- If user made offer, show it -->
   <% if @shipment.has_offer?(current_user) %>
-    <%= @shipment.user_offer(current_user) %>
+    <p>$<%= @shipment.user_offer(current_user) %></p>
     <% @offer = @shipment.set_offer(current_user) %>
     <%= link_to "Change amount", edit_offer_path(@offer) %>
     <br>
+  <!-- If not, show form to make one -->
   <% else %>
     <%= render "offers/form" %>
   <% end %>
 <% end %>
 
+<!-- Possible drop down selection for adding carriers -->
+<!-- <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Add carriers?</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <%#= link_to 'Select Carriers', choose_carriers_path(@shipment) %>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- If shipper, run block -->
 <% if shipper? %>
+  <!-- If there are remaining carriers that could be invited -->
   <% if @not_added_carrier_count > 0 %>
     <%= link_to 'Select Carriers', choose_carriers_path(@shipment) %> |
+  <!-- If all carriers have been added... -->
   <% else %>
     <%= "All Carriers Have Been Added" %> |
   <% end %>
+  <!-- Regardless, show Edit link for the shipper logged in -->
   <%= link_to 'Edit', edit_shipment_path(@shipment) %> |
 <% end %>
 

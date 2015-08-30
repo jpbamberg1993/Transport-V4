@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'layouts/footer'
   get 'static_pages/help'
   get 'static_pages/home'
-  #get 'shipments/delete_modal'
 
   resources :offers
   resources :shipments
